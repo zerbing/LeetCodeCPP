@@ -30,20 +30,21 @@ public:
         return res;
       }
       sort(nums.begin(), nums.end());
-      for (int i = 0; i < nums.size() - 3; ++i)
+      int n = static_cast<int>(nums.size());
+      for (int i = 0; i < n - 3; ++i)
       {
         if (i > 0 && nums[i] == nums[i - 1])
         {
           continue;
         }
-        for (int j = i + 1; j < nums.size() - 2; ++j)
+        for (int j = i + 1; j < n - 2; ++j)
         {
           if (j > i + 1 && nums[j] == nums[j - 1])
           {
             continue;
           }
           int left = j + 1;
-          int right = nums.size() - 1;
+          int right = n - 1;
           while (left < right)
           {
             long long sum = static_cast<long long>(nums[i]) + nums[j] + nums[left] + nums[right];
@@ -450,7 +451,7 @@ public:
     q.push(root);
     while (!q.empty())
     {
-      int size = q.size();
+      int size = static_cast<int>(q.size());
       for (int i = 0; i < size; ++i)
       {
         Node* node = q.front();
@@ -506,12 +507,12 @@ namespace N410
 class Solution {
 public:
   int splitArray(vector<int>& nums, int k) {
-    std::vector<int> preSum(nums.size() + 1, 0);
+    vector<int> preSum(nums.size() + 1, 0);
     for (int i = 1; i <= nums.size(); ++i)
     {
       preSum[i] = preSum[i - 1] + nums[i - 1];
     }
-    std::vector<std::vector<int>> dp(k, std::vector<int>(nums.size() + 1, 0));
+    vector<vector<int>> dp(k, vector<int>(nums.size() + 1, 0));
     dp[0] = preSum;
     for (int i = 1; i < k; ++i)
     {
@@ -605,7 +606,7 @@ namespace N670
 class Solution {
 public:
   int maximumSwap(int num) {
-    std::vector<int> nums;
+    vector<int> nums;
     while (num)
     {
       nums.push_back(num % 10);
@@ -637,7 +638,6 @@ public:
   }
 };
 }
-
 
 // 2085. 统计出现过一次的公共字符串
 namespace N2085
@@ -711,7 +711,7 @@ namespace N2645
 class Solution {
 public:
   int addMinimum(string word) {
-    int n = word.size();
+    int n = static_cast<int>(word.size());
     vector<int> dp(n + 1, 0);
     for (int i = 1; i <= n; ++i)
     {
@@ -748,7 +748,7 @@ public:
         st.push(s[i]);
       }
     }
-    return st.size();
+    return static_cast<int>(st.size());
   }
 };
 }
@@ -767,7 +767,7 @@ public:
     {
       m[dictionary[i]]++;
     }
-    int n = s.size();
+    int n = static_cast<int>(s.size());
     vector<int> dp(n + 1, 0);
     for (int i = 1; i <= n; ++i)
     {
@@ -982,11 +982,54 @@ namespace N2865
 //对于所有 0 < j <= i ，都有 heights[j - 1] <= heights[j]
 //  对于所有 i <= k < n - 1 ，都有 heights[k + 1] <= heights[k]
 //  请你返回满足 美丽塔 要求的方案中，高度和的最大值 。
-
 class Solution {
 public:
   long long maximumSumOfHeights(vector<int>& maxHeights) {
-
+    vector<long long> leftHeights(maxHeights.size(), 0);
+    vector<long long> rightHeights(maxHeights.size(), 0);
+    // 计算左边的高度
+    stack<int> st;
+    int n = static_cast<int>(maxHeights.size());
+    for (int i = 0; i < n; ++i)
+    {
+      while (!st.empty() && maxHeights[st.top()] > maxHeights[i])
+      {
+        st.pop();
+      }
+      if (st.empty())
+      {
+        leftHeights[i] = static_cast<long long>(maxHeights[i]) * (i + 1);
+      }
+      else
+      {
+        leftHeights[i] = leftHeights[st.top()] + static_cast<long long>(maxHeights[i]) * (i - st.top());
+      }
+      st.push(i);
+    }
+    // 计算右边的高度
+    st = stack<int>();
+    for (int i = n - 1; i >= 0; --i)
+    {
+      while (!st.empty() && maxHeights[st.top()] > maxHeights[i])
+      {
+        st.pop();
+      }
+      if (st.empty())
+      {
+        rightHeights[i] = static_cast<long long>(maxHeights[i]) * (maxHeights.size() - i);
+      }
+      else
+      {
+        rightHeights[i] = rightHeights[st.top()] + static_cast<long long>(maxHeights[i]) * (st.top() - i);
+      }
+      st.push(i);
+    }
+    long long res = 0;
+    for (int i = 0; i < maxHeights.size(); ++i)
+    {
+      res = max(res, leftHeights[i] + rightHeights[i] - maxHeights[i]);
+    }
+    return res;
   }
 };
 }
@@ -996,7 +1039,7 @@ namespace LCR004
 {
 class Solution {
   int singleNumber(vector<int>& nums) {
-    std::map<int, int> m;
+    map<int, int> m;
     for (int i = 0; i < nums.size(); ++i)
     {
       m[nums[i]]++;
@@ -1066,6 +1109,9 @@ class Solution {
 
 int main()
 {
+  std::vector<int> param = { 5, 3, 4, 1, 1 };
+  N2865::Solution s;
+  s.maximumSumOfHeights(param);
   system("pause");
 }
 
