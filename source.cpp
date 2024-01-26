@@ -13,6 +13,7 @@
 #include <set>
 #include <unordered_set>
 #include <queue>
+#include <string>
 using namespace std;
 using namespace std::chrono;
 
@@ -577,7 +578,7 @@ class Solution {
 };
 }
 
-// 466. 统计重复个数
+// 466. 统计重复个数 // todo
 namespace N466
 {
 //定义 str = [s, n] 表示 str 由 n 个字符串 s 连接构成。
@@ -592,7 +593,6 @@ namespace N466
 class Solution {
 public:
   int getMaxRepetitions(string s1, int n1, string s2, int n2) {
-    // todo
   }
 };
 }
@@ -724,6 +724,33 @@ public:
 };
 }
 
+// 2678. 老人的数目
+namespace N2678
+{
+//给你一个下标从 0 开始的字符串 details 。details 中每个元素都是一位乘客的信息，信息用长度为 15 的字符串表示，表示方式如下：
+//
+//前十个字符是乘客的手机号码。
+//接下来的一个字符是乘客的性别。
+//接下来两个字符是乘客的年龄。
+//最后两个字符是乘客的座位号。
+//请你返回乘客中年龄 严格大于 60 岁 的人数。
+class Solution {
+public:
+  int countSeniors(vector<string>& details) {
+    int res = 0;
+    for (size_t i = 0; i < details.size(); ++i)
+    {
+      string age = details[i].substr(11, 2);
+      if (stoi(age) > 60)
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+};
+}
+
 // 2696. 删除子串后的字符串最小长度
 namespace N2696
 {
@@ -784,7 +811,7 @@ public:
 };
 }
 
-// 2719. 统计整数数目
+// 2719. 统计整数数目 // todo
 namespace N2719
 {
 //给你两个数字字符串 num1 和 num2 ，以及两个整数 max_sum 和 min_sum 。如果一个整数 x 满足以下条件，我们称它是一个好整数：
@@ -797,7 +824,6 @@ namespace N2719
 class Solution {
 public:
   int count(string num1, string num2, int min_sum, int max_sum) {
-    // todo
   }
 };
 }
@@ -919,7 +945,7 @@ public:
 };
 }
 
-// 2809. 使数组和小于等于 x 的最少时间
+// 2809. 使数组和小于等于 x 的最少时间 // todo
 namespace N2809
 {
 //给你两个长度相等下标从 0 开始的整数数组 nums1 和 nums2 。每一秒，对于所有下标 0 <= i < nums1.length ，nums1[i] 的值都增加 nums2[i] 。操作 完成后 ，你可以进行如下操作：
@@ -931,7 +957,6 @@ namespace N2809
 class Solution {
 public:
   int minimumTime(vector<int>& nums1, vector<int>& nums2, int x) {
-    // todo 2978难度，暂时放弃
   }
 };
 }
@@ -960,6 +985,26 @@ public:
       }
     }
     return res;
+  }
+};
+}
+
+// 2846. 边权重均等查询 // todo
+namespace N2846
+{
+//现有一棵由 n 个节点组成的无向树，节点按从 0 到 n - 1 编号。给你一个整数 n 和一个长度为 n - 1 的二维整数数组 edges ，其中 edges[i] = [ui, vi, wi] 表示树中存在一条位于节点 ui 和节点 vi 之间、权重为 wi 的边。
+//
+//另给你一个长度为 m 的二维整数数组 queries ，其中 queries[i] = [ai, bi] 。对于每条查询，请你找出使从 ai 到 bi 路径上每条边的权重相等所需的 最小操作次数 。在一次操作中，你可以选择树上的任意一条边，并将其权重更改为任意值。
+//
+//注意：
+//
+//查询之间 相互独立 的，这意味着每条新的查询时，树都会回到 初始状态 。
+//从 ai 到 bi的路径是一个由 不同 节点组成的序列，从节点 ai 开始，到节点 bi 结束，且序列中相邻的两个节点在树中共享一条边。
+//返回一个长度为 m 的数组 answer ，其中 answer[i] 是第 i 条查询的答案。
+
+class Solution {
+public:
+  vector<int> minOperationsQueries(int n, vector<vector<int>>& edges, vector<vector<int>>& queries) {
   }
 };
 }
