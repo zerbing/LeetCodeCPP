@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <chrono>
 #include <vector>
@@ -15,7 +16,6 @@
 #include <queue>
 #include <string>
 using namespace std;
-using namespace std::chrono;
 
 // 18. 四数之和
 namespace N18
@@ -98,13 +98,16 @@ public:
       fast = fast->next;
     }
     ListNode* slow = dummy;
-    while (fast != nullptr && fast->next != nullptr)
+    while (fast != nullptr && fast->next != nullptr && slow != nullptr)
     {
       fast = fast->next;
       slow = slow->next;
     }
     // 删除倒数第n个节点
-    slow->next = slow->next->next;
+    if (slow != nullptr && slow->next != nullptr)
+    {
+      slow->next = slow->next->next;
+    }
     ListNode* res = dummy->next;
     delete dummy;
     return res;
@@ -455,6 +458,85 @@ public:
 };
 }
 
+// 99. 恢复二叉搜索树
+namespace N99
+{
+// 给你二叉搜索树的根节点 root ，该树中的 恰好 两个节点的值被错误地交换。请在不改变其结构的情况下，恢复这棵树
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  void recoverTree(TreeNode* root) {
+    // 中序遍历结果
+    std::vector<int> nums;
+    // 交换的两个节点
+    std::vector<int> swap;
+    function<void(TreeNode*)> traverse = [&](TreeNode* node)
+      {
+        if (nullptr == node)
+        {
+          return;
+        }
+        traverse(node->left);
+        nums.push_back(node->val);
+        traverse(node->right);
+      };
+
+    function<void()> findNodes = [&]()
+      {
+        int first = -1;
+        int second = -1;
+        for (int i = 0; i < nums.size() - 1; ++i)
+        {
+          if (nums[i] > nums[i + 1])
+          {
+            if (first == -1)
+            {
+              first = i;
+              second = i + 1;
+            }
+            else
+            {
+              second = i + 1;
+            }
+          }
+        }
+        swap.push_back(nums[first]);
+        swap.push_back(nums[second]);
+      };
+
+    function<void(TreeNode*)> swapNodes = [&](TreeNode* node)
+      {
+        if (nullptr == node)
+        {
+          return;
+        }
+        swapNodes(node->left);
+        if (node->val == swap[0])
+        {
+          node->val = swap[1];
+        }
+        else if (node->val == swap[1])
+        {
+          node->val = swap[0];
+        }
+        swapNodes(node->right);
+      };
+
+    traverse(root);
+    findNodes();
+    swapNodes(root);
+  }
+};
+}
+
 // 117. 填充每个节点的下一个右侧节点指针 II
 namespace N117
 {
@@ -622,6 +704,7 @@ class Solution {
     return res;
   }
 };
+
 }
 
 // 466. 统计重复个数 // todo
@@ -638,7 +721,7 @@ namespace N466
 //请你找出一个最大整数 m ，以满足 str = [str2, m] 可以从 str1 获得
 class Solution {
 public:
-  int getMaxRepetitions(string s1, int n1, string s2, int n2) {
+  int getMaxRepetitions([[maybe_unused]] string s1, [[maybe_unused]] int n1, [[maybe_unused]] string s2, [[maybe_unused]] int n2) {
   }
 };
 }
@@ -904,7 +987,7 @@ namespace N2719
 //注意，digit_sum(x) 表示 x 各位数字之和。
 class Solution {
 public:
-  int count(string num1, string num2, int min_sum, int max_sum) {
+  int count([[maybe_unused]] string num1, [[maybe_unused]] string num2, [[maybe_unused]] int min_sum, [[maybe_unused]] int max_sum) {
   }
 };
 }
@@ -1037,7 +1120,7 @@ namespace N2809
 //  请你返回使 nums1 中所有元素之和 小于等于 x 所需要的 最少 时间，如果无法实现，那么返回 - 1 。
 class Solution {
 public:
-  int minimumTime(vector<int>& nums1, vector<int>& nums2, int x) {
+  int minimumTime([[maybe_unused]] vector<int>& nums1, [[maybe_unused]] vector<int>& nums2, [[maybe_unused]] int x) {
   }
 };
 }
@@ -1085,7 +1168,8 @@ namespace N2846
 
 class Solution {
 public:
-  vector<int> minOperationsQueries(int n, vector<vector<int>>& edges, vector<vector<int>>& queries) {
+  vector<int> minOperationsQueries([[maybe_unused]] int n, [[maybe_unused]] vector<vector<int>>& edges, [[maybe_unused]] vector<vector<int>>& queries) {
+
   }
 };
 }
