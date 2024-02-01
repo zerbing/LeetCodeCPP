@@ -934,7 +934,6 @@ public:
   Node(int _val, Node* _left, Node* _right, Node* _next)
     : val(_val), left(_left), right(_right), next(_next) {}
 };
-
 class Solution {
 public:
   Node* connect(Node* root) {
@@ -966,6 +965,44 @@ public:
       }
     }
     return root;
+  }
+};
+}
+
+// 124. 二叉树中的最大路径和
+namespace N124
+{
+//二叉树中的 路径 被定义为一条节点序列，序列中每对相邻节点之间都存在一条边。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。
+//
+//路径和 是路径中各节点值的总和。
+//
+//给你一个二叉树的根节点 root ，返回其 最大路径和 。
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  int maxPathSum(TreeNode* root) {
+    int res = INT_MIN;
+    function<int(TreeNode* root)> traverse = [&](TreeNode* root)->int
+      {
+        if (nullptr == root)
+        {
+          return 0;
+        }
+        int left = max(traverse(root->left), 0);
+        int right = max(traverse(root->right), 0);
+        res = max(res, root->val + left + right);
+        return root->val + max(left, right);
+      };
+    traverse(root);
+    return res;
   }
 };
 }
