@@ -708,6 +708,60 @@ public:
 };
 }
 
+// 111. 二叉树的最小深度
+namespace N111
+{
+//给定一个二叉树，找出其最小深度。
+//
+//最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+//
+//说明：叶子节点是指没有子节点的节点。
+//Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  int minDepth(TreeNode* root) {
+    int res = 0;
+    queue<TreeNode*> q;
+    if (root != nullptr)
+    {
+      q.push(root);
+      res++;
+    }
+    while (!q.empty())
+    {
+      size_t size = q.size();
+      for (size_t i = 0; i < size; i++)
+      {
+        TreeNode* node = q.front();
+        q.pop();
+        if (node->left == nullptr && node->right == nullptr)
+        {
+          return res;
+        }
+        if (node->left != nullptr)
+        {
+          q.push(node->left);
+        }
+        if (node->right != nullptr)
+        {
+          q.push(node->right);
+        }
+      }
+      res++;
+    }
+    return res;
+  }
+};
+}
+
 // 117. 填充每个节点的下一个右侧节点指针 II
 namespace N117
 {
