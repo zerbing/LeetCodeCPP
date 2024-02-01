@@ -800,6 +800,47 @@ public:
 };
 }
 
+// 113. 路径总和 II
+namespace N113
+{
+//给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
+//
+//叶子节点 是指没有子节点的节点。
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+    vector<vector<int>> res;
+    vector<int> path;
+    function<void(TreeNode* root, int)> dfs = [&](TreeNode* root, int sum)
+      {
+        if (nullptr == root)
+        {
+          return;
+        }
+        path.emplace_back(root->val);
+        if (nullptr == root->left && nullptr == root->right && sum + root->val == targetSum)
+        {
+          res.emplace_back(path);
+        }
+        dfs(root->left, sum + root->val);
+        dfs(root->right, sum + root->val);
+        path.pop_back();
+      };
+    dfs(root, 0);
+    return res;
+  }
+};
+}
+
 // 117. 填充每个节点的下一个右侧节点指针 II
 namespace N117
 {
