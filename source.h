@@ -1087,6 +1087,52 @@ public:
 };
 }
 
+// 145. 二叉树的后序遍历
+namespace N145
+{
+// 给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> res;
+    stack<TreeNode*> st;
+    TreeNode* cur = root;
+    TreeNode* pre = nullptr;
+    while (cur != nullptr || !st.empty())
+    {
+      while (cur != nullptr)
+      {
+        st.push(cur);
+        cur = cur->left;
+      }
+      cur = st.top();
+      st.pop();
+      if (cur->right == nullptr || cur->right == pre)
+      {
+        res.push_back(cur->val);
+        pre = cur;
+        cur = nullptr;
+      }
+      else
+      {
+        st.push(cur);
+        cur = cur->right;
+      }
+    }
+    return res;
+  }
+};
+}
+
 // 383. 赎金信
 namespace N383
 {
