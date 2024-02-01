@@ -409,6 +409,52 @@ public:
 };
 }
 
+// 96. 不同的二叉搜索树
+namespace N96
+{
+// 给你一个整数 n ，求恰由 n 个节点组成且节点值从 1 到 n 互不相同的 二叉搜索树 有多少种？返回满足题意的二叉搜索树的种数。
+class Solution {
+public:
+  int numTrees(int n) {
+    unordered_map<int, int> memo;
+    function<int(int)> dfs = [&](int n)->int
+      {
+        if (n == 0 || n == 1)
+        {
+          memo[n] = 1;
+          return 1;
+        }
+        int res = 0;
+        for (int i = 1; i <= n; ++i)
+        {
+          int left = memo.count(i - 1) != 0 ? memo[i - 1] : dfs(i - 1);
+          int right = memo.count(n - i) != 0 ? memo[n - i] : dfs(n - i);
+          res += left * right;
+        }
+        memo[n] = res;
+        return res;
+      };
+    return dfs(n);
+  }
+};
+
+class Solution2 {
+public:
+  int numTrees(int n) {
+    vector<int> G(n + 1, 0);
+    G[0] = 1;
+    G[1] = 1;
+
+    for (int i = 2; i <= n; ++i) {
+      for (int j = 1; j <= i; ++j) {
+        G[i] += G[j - 1] * G[i - j];
+      }
+    }
+    return G[n];
+  }
+};
+}
+
 // 117. 填充每个节点的下一个右侧节点指针 II
 namespace N117
 {
