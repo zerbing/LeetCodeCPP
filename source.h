@@ -611,6 +611,63 @@ public:
 };
 }
 
+// 109. 有序链表转换二叉搜索树
+namespace N109
+{
+//给定一个单链表的头节点  head ，其中的元素 按升序排序 ，将其转换为高度平衡的二叉搜索树。
+//
+//本题中，一个高度平衡二叉树是指一个二叉树每个节点 的左右两个子树的高度差不超过 1。
+// Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  TreeNode* sortedListToBST(ListNode* head) {
+    if (head == nullptr)
+    {
+      return nullptr;
+    }
+    // 找到链表的中间节点
+    ListNode* slow = head;
+    ListNode* fast = head;
+    ListNode* pre = nullptr;
+    while (fast != nullptr && fast->next != nullptr)
+    {
+      pre = slow;
+      slow = slow->next;
+      fast = fast->next->next;
+    }
+    // 断开链表
+    if (pre != nullptr)
+    {
+      pre->next = nullptr;
+    }
+    TreeNode* node = new TreeNode(slow->val);
+    if (slow == head)
+    {
+      return node;
+    }
+    node->left = sortedListToBST(head);
+    node->right = sortedListToBST(slow->next);
+    return node;
+  }
+};
+}
+
 // 117. 填充每个节点的下一个右侧节点指针 II
 namespace N117
 {
