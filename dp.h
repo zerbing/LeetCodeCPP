@@ -302,6 +302,7 @@ public:
   int calculateMinimumHP(vector<vector<int>>& dungeon) {
     // dp[i][j]表示进入dungeon[i][j]时的最小初始健康点数
     vector<vector<int>> dp(dungeon.size() + 1, vector<int>(dungeon[0].size() + 1, INT_MAX));
+    // 由于骑士任意时刻的健康点数都不能小于1，所以需要反向dp
     dp[dungeon.size()][dungeon[0].size() - 1] = 1;
     dp[dungeon.size() - 1][dungeon[0].size()] = 1;
     for (int i = dungeon.size() - 1; i >= 0; --i)
@@ -312,6 +313,27 @@ public:
       }
     }
     return dp[0][0];
+  }
+};
+}
+
+// 198. 打家劫舍 (中等)
+namespace N198
+{
+//你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+//
+//给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
+class Solution {
+public:
+  int rob(vector<int>& nums) {
+    // dp[i].first表示偷窃到第i个房屋时的最大金额，dp[i].second表示不偷窃第i个房屋时的最大金额
+    vector<pair<int, int>> dp(nums.size() + 1, {0, 0});
+    for (int i = 1; i <= nums.size(); ++i)
+    {
+      dp[i].first = dp[i - 1].second + nums[i - 1];
+      dp[i].second = max(dp[i - 1].first, dp[i - 1].second);
+    }
+    return max(dp[nums.size()].first, dp[nums.size()].second);
   }
 };
 }
