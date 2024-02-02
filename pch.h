@@ -38,4 +38,3 @@ using namespace std;
 #include "pre_sum.h"
 #include "greedy.h"
 
-#include "gtest/gtest.h"
