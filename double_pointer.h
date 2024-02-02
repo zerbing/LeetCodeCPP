@@ -1,6 +1,6 @@
 #pragma once
 
-// 18. 四数之和
+// 18. 四数之和 (中等)
 namespace N18
 {
 class Solution {

@@ -1,5 +1,16 @@
 #include "pch.h"
-#include "source.h"
+
+// 87. ÈÅÂÒ×Ö·û´®
+namespace N87
+{
+TEST(N87SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  EXPECT_TRUE(solution.isScramble("great", "rgeat"));
+  EXPECT_FALSE(solution.isScramble("abcde", "caebd"));
+  EXPECT_TRUE(solution.isScramble("a", "a"));
+}
+}
+
 // 96. ²»Í¬µÄ¶þ²æËÑË÷Ê÷
 namespace N96
 {
@@ -108,6 +119,6 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N96*";
+  ::testing::GTEST_FLAG(filter) = "*N87*";
   return RUN_ALL_TESTS();
 }

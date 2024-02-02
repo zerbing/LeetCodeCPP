@@ -22,7 +22,7 @@
     <ClInclude Include="binary_tree.h">
       <Filter>classified</Filter>
     </ClInclude>
-    <ClInclude Include="list.h">
+    <ClInclude Include="list_.h">
       <Filter>classified</Filter>
     </ClInclude>
     <ClInclude Include="backtrace.h">
@@ -34,7 +34,7 @@
     <ClInclude Include="monotonic_stack.h">
       <Filter>classified</Filter>
     </ClInclude>
-    <ClInclude Include="stack.h">
+    <ClInclude Include="stack_.h">
       <Filter>classified</Filter>
     </ClInclude>
     <ClInclude Include="dfs.h">
@@ -43,13 +43,13 @@
     <ClInclude Include="bfs.h">
       <Filter>classified</Filter>
     </ClInclude>
-    <ClInclude Include="string.h">
+    <ClInclude Include="string_.h">
       <Filter>classified</Filter>
     </ClInclude>
     <ClInclude Include="pre_sum.h">
       <Filter>classified</Filter>
     </ClInclude>
-    <ClInclude Include="vector.h">
+    <ClInclude Include="vector_.h">
       <Filter>classified</Filter>
     </ClInclude>
     <ClInclude Include="greedy.h">

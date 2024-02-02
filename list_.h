@@ -1,6 +1,6 @@
 #pragma once
 
-// 19. 删除链表的倒数第 N 个结点
+// 19. 删除链表的倒数第 N 个结点 (中等)
 namespace N19
 {
 struct ListNode {
@@ -38,7 +38,7 @@ public:
 };
 }
 
-// 21. 合并两个有序链表
+// 21. 合并两个有序链表 (简单)
 namespace N21
 {
 struct ListNode {
@@ -76,7 +76,7 @@ public:
 };
 }
 
-// LCR 077. 排序链表
+// LCR 077. 排序链表 (中等)
 namespace LCR077
 {
 // 给定链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。

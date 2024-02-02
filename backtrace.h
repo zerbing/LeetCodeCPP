@@ -1,6 +1,6 @@
 #pragma once
 
-// 39. 组合总和
+// 39. 组合总和 (中等)
 namespace N39
 {
 class Solution {
@@ -33,7 +33,7 @@ class Solution {
 };
 }
 
-// 40. 组合总和 II
+// 40. 组合总和 II (中等)
 namespace N40
 {
 class Solution {
@@ -72,7 +72,7 @@ class Solution {
 };
 }
 
-// 47. 全排列 II
+// 47. 全排列 II (中等)
 namespace N47
 {
 class Solution {
@@ -116,7 +116,7 @@ class Solution {
 };
 }
 
-// 52. N 皇后 II
+// 52. N 皇后 II (困难)
 namespace N52
 {
 class Solution {

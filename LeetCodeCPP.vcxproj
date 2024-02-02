@@ -151,15 +151,15 @@
     <ClInclude Include="dp.h" />
     <ClInclude Include="greedy.h" />
     <ClInclude Include="hash.h" />
-    <ClInclude Include="list.h" />
+    <ClInclude Include="list_.h" />
     <ClInclude Include="monotonic_stack.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="pre_sum.h" />
     <ClInclude Include="source.h" />
-    <ClInclude Include="stack.h" />
+    <ClInclude Include="stack_.h" />
     <ClInclude Include="binary_tree.h" />
-    <ClInclude Include="string.h" />
-    <ClInclude Include="vector.h" />
+    <ClInclude Include="string_.h" />
+    <ClInclude Include="vector_.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
