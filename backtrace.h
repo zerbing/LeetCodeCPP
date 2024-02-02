@@ -157,3 +157,46 @@ public:
   }
 };
 }
+
+// 140. 单词拆分 II (困难)
+namespace N140
+{
+//给定一个字符串 s 和一个字符串字典 wordDict ，在字符串 s 中增加空格来构建一个句子，使得句子中所有的单词都在词典中。以任意顺序 返回所有这些可能的句子。
+//
+//注意：词典中的同一个单词可能在分段中被重复使用多次。
+class Solution {
+public:
+  vector<string> wordBreak(string s, vector<string>& wordDict) {
+    vector<string> res;
+    function<void(vector<int>&)> dfs = [&](vector<int>& seprators) {
+      if (seprators.back() == s.size())
+      {
+        string sentence;
+        for (int i = 1; i < seprators.size(); ++i)
+        {
+          sentence += s.substr(seprators[i - 1], seprators[i] - seprators[i - 1]) + " ";
+        }
+        sentence.pop_back();
+        res.push_back(sentence);
+        return;
+      }
+      else
+      {
+        for (const string& word : wordDict)
+        {
+          int len = static_cast<int>(word.size());
+          if (s.substr(seprators.back(), len) == word)
+          {
+            seprators.push_back(seprators.back() + len);
+            dfs(seprators);
+            seprators.pop_back();
+          }
+        }
+      }
+      };
+    vector<int> seprators = { 0 };
+    dfs(seprators);
+    return res;
+  }
+};
+}

@@ -257,45 +257,28 @@ public:
 };
 }
 
-// 140. 单词拆分 II (困难)
-namespace N140
+// 152. 乘积最大子数组 (中等)
+namespace N152
 {
-//给定一个字符串 s 和一个字符串字典 wordDict ，在字符串 s 中增加空格来构建一个句子，使得句子中所有的单词都在词典中。以任意顺序 返回所有这些可能的句子。
+//给你一个整数数组 nums ，请你找出数组中乘积最大的非空连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
 //
-//注意：词典中的同一个单词可能在分段中被重复使用多次。
+//测试用例的答案是一个 32 - 位 整数。
+//
+//子数组 是数组的连续子序列。
 class Solution {
 public:
-  vector<string> wordBreak(string s, vector<string>& wordDict) {
-    vector<string> res;
-    function<void(vector<int>&)> dfs = [&](vector<int>& seprators) {
-        if (seprators.back() == s.size())
-        {
-          string sentence;
-          for (int i = 1; i < seprators.size(); ++i)
-          {
-            sentence += s.substr(seprators[i - 1], seprators[i] - seprators[i - 1]) + " ";
-          }
-          sentence.pop_back();
-          res.push_back(sentence);
-          return;
-        }
-        else
-        {
-          for (const string& word : wordDict)
-          {
-            int len = static_cast<int>(word.size());
-            if (s.substr(seprators.back(), len) == word)
-            {
-              seprators.push_back(seprators.back() + len);
-              dfs(seprators);
-              seprators.pop_back();
-            }
-          }
-        }
-      };
-    vector<int> seprators = {0};
-    dfs(seprators);
-    return res;
+  int maxProduct(vector<int>& nums) {
+    // dp[i][0]表示以nums[i]结尾的最大乘积，dp[i][1]表示以nums[i]结尾的最小乘积
+    vector<pair<int, int>> dp(nums.size(), {INT_MIN, INT_MAX});
+    dp[0] = {nums[0], nums[0]};
+    int maxProduct = nums[0];
+    for (int i = 1; i < nums.size(); ++i)
+    {
+      dp[i].first = max({dp[i - 1].first * nums[i], dp[i - 1].second * nums[i], nums[i]});
+      dp[i].second = min({dp[i - 1].first * nums[i], dp[i - 1].second * nums[i], nums[i]});
+      maxProduct = max(maxProduct, dp[i].first);
+    }
+    return maxProduct;
   }
 };
 }
