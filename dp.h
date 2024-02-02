@@ -180,6 +180,32 @@ public:
 };
 }
 
+// 118. 杨辉三角 (简单)
+namespace N118
+{
+//给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。
+//
+//在「杨辉三角」中，每个数是它左上方和右上方的数的和。
+class Solution {
+public:
+  vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> res;
+    for (int i = 0; i < numRows; ++i)
+    {
+      vector<int> row(i + 1, 1);
+      for (int j = 1; j < i; ++j)
+      {
+        row[j] = res[i - 1][j - 1] + res[i - 1][j];
+      }
+      res.push_back(row);
+    }
+    return res;
+  }
+};
+}
+
+// 119. 杨辉三角 II
+
 // 2645. 构造有效字符串的最少插入数 (中等)
 namespace N2645
 {
