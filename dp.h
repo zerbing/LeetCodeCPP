@@ -204,7 +204,29 @@ public:
 };
 }
 
-// 119. 杨辉三角 II
+// 119. 杨辉三角 II (简单)
+namespace N119
+{
+//给定一个非负索引 rowIndex，返回「杨辉三角」的第 rowIndex 行。
+//
+//在「杨辉三角」中，每个数是它左上方和右上方的数的和。
+class Solution {
+public:
+  vector<int> getRow(int rowIndex) {
+    vector<int> res(rowIndex + 1, 1);
+    for (int i = 1; i <= rowIndex; ++i)
+    {
+      for (int j = i - 1; j > 0; --j)
+      {
+        res[j] += res[j - 1];
+      }
+    }
+    return res;
+  }
+};
+}
+
+// 120. 三角形最小路径和 (中等)
 
 // 2645. 构造有效字符串的最少插入数 (中等)
 namespace N2645
