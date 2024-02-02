@@ -227,6 +227,35 @@ public:
 }
 
 // 139. 单词拆分
+namespace N139
+{
+//给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。
+//
+//注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。
+class Solution {
+public:
+  bool wordBreak(string s, vector<string>& wordDict) {
+    vector<bool> dp(s.size() + 1, false);
+    dp[0] = true;
+    for (int i = 1; i <= s.size(); ++i)
+    {
+      for (const string& word : wordDict)
+      {
+        int len = static_cast<int>(word.size());
+        if (i >= len && s.substr(i - len, len) == word)
+        {
+          dp[i] = dp[i - len];
+          if (dp[i])
+          {
+            break;
+          }
+        }
+      }
+    }
+    return dp[s.size()];
+  }
+};
+}
 
 // 2645. 构造有效字符串的最少插入数 (中等)
 namespace N2645
