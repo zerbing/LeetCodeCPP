@@ -205,7 +205,7 @@ public:
 namespace N357
 {
 // 给你一个整数 n ，统计并返回各位数字都不同的数字 x 的个数，其中 0 <= x < 10^n 。
-// 效率低
+// 效率低，指数级别
 class Solution {
 public:
   int countNumbersWithUniqueDigits(int n) {

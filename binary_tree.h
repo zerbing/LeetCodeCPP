@@ -855,7 +855,6 @@ struct TreeNode {
 class Solution {
 public:
   int rob(TreeNode* root) {
-    int res = 0;
     function<pair<int, int>(TreeNode*)> dfs = [&](TreeNode* root)->pair<int, int>
       {
         if (nullptr == root)

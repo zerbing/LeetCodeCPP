@@ -124,6 +124,29 @@ TEST(N309SolutionTest, HandlePositiveInput) {
 }
 }
 
+// 375. 猜数字大小 II (中等)
+namespace N375
+{
+TEST(N375SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  {
+    int input = 10;
+    int expected = 16;
+    EXPECT_EQ(solution.getMoneyAmount(input), expected);
+  }
+  {
+    int input = 1;
+    int expected = 0;
+    EXPECT_EQ(solution.getMoneyAmount(input), expected);
+  }
+  {
+    int input = 2;
+    int expected = 1;
+    EXPECT_EQ(solution.getMoneyAmount(input), expected);
+  }
+}
+}
+
 // 2085. 统计出现过一次的公共字符串
 namespace N2085
 {
@@ -178,6 +201,6 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N264*";
+  ::testing::GTEST_FLAG(filter) = "*N375*";
   return RUN_ALL_TESTS();
 }
