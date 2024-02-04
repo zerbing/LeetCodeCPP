@@ -305,9 +305,9 @@ public:
     // 由于骑士任意时刻的健康点数都不能小于1，所以需要反向dp
     dp[dungeon.size()][dungeon[0].size() - 1] = 1;
     dp[dungeon.size() - 1][dungeon[0].size()] = 1;
-    for (size_t i = dungeon.size() - 1; i >= 0; --i)
+    for (int i = static_cast<int>(dungeon.size()) - 1; i >= 0; --i)
     {
-      for (size_t j = dungeon[0].size() - 1; j >= 0; --j)
+      for (int j = static_cast<int>(dungeon[0].size()) - 1; j >= 0; --j)
       {
         dp[i][j] = max(1, min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j]);
       }
