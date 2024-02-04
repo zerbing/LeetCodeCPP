@@ -834,3 +834,42 @@ private:
  * bool param_2 = obj->hasNext();
  */
 }
+
+// 337. 打家劫舍 III (中等)
+namespace N337
+{
+//小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为 root 。
+//
+//除了 root 之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果 两个直接相连的房子在同一天晚上被打劫 ，房屋将自动报警。
+//
+//给定二叉树的 root 。返回 在不触动警报的情况下 ，小偷能够盗取的最高金额 。
+// Definition for a binary tree node.
+struct TreeNode {
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  int rob(TreeNode* root) {
+    int res = 0;
+    function<pair<int, int>(TreeNode*)> dfs = [&](TreeNode* root)->pair<int, int>
+      {
+        if (nullptr == root)
+        {
+          return { 0, 0 };
+        }
+        pair<int, int> left = dfs(root->left);
+        pair<int, int> right = dfs(root->right);
+        int rob = root->val + left.second + right.second;
+        int notRob = max(left.first, left.second) + max(right.first, right.second);
+        return { rob, notRob };
+      };
+    pair<int, int> p = dfs(root);
+    return max(p.first, p.second);
+  }
+};
+}
