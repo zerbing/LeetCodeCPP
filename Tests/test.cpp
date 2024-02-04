@@ -106,6 +106,23 @@ TEST(N264SolutionTest, HandlePositiveInput) {
 }
 }
 
+// 309. 最佳买卖股票时机含冷冻期 (中等)
+namespace N309
+{
+TEST(N309SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  {
+    std::vector<int> input = { 1, 2, 3, 0, 2 };
+    int expected = 3;
+    EXPECT_EQ(solution.maxProfit(input), expected);
+  }
+  {
+    std::vector<int> input = { 1 };
+    int expected = 0;
+    EXPECT_EQ(solution.maxProfit(input), expected);
+  }
+}
+}
 
 // 2085. 统计出现过一次的公共字符串
 namespace N2085
