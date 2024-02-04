@@ -158,7 +158,8 @@ public:
       }
       else
       {
-        memo[n] = min(dfs(n + 1), dfs(n - 1)) + 1;
+        // 这里直接执行两步可以减少递归次数
+        memo[n] = min(dfs(n / 2), dfs(n / 2 + 1)) + 2;
       }
       return memo[n];
       };
