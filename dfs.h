@@ -85,3 +85,47 @@ public:
   }
 };
 }
+
+// 329. 矩阵中的最长递增路径 (困难)
+namespace N329
+{
+//给定一个 m x n 整数矩阵 matrix ，找出其中 最长递增路径 的长度。
+//
+//对于每个单元格，你可以往上，下，左，右四个方向移动。 你 不能 在 对角线 方向上移动或移动到 边界外（即不允许环绕）。
+class Solution {
+public:
+  int longestIncreasingPath(vector<vector<int>>& matrix) {
+    int maxLen = 0;
+    size_t m = matrix.size();
+    size_t n = matrix[0].size();
+    vector<vector<int>> memo(m, vector<int>(n, 0));
+    vector<vector<int>> dirs = { { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
+    function<void(size_t, size_t, int)> dfs = [&](size_t i, size_t j, int curLen)
+      {
+        if (memo[i][j] >= curLen)
+        {
+          return;
+        }
+        memo[i][j] = curLen;
+        maxLen = max(maxLen, curLen);
+        for (const auto& dir : dirs)
+        {
+          size_t x = i + dir[0];
+          size_t y = j + dir[1];
+          if (x >= 0 && x < m && y >= 0 && y < n && matrix[x][y] > matrix[i][j])
+          {
+            dfs(x, y, curLen + 1);
+          }
+        }
+      };
+    for (size_t i = 0; i < m; ++i)
+    {
+      for (size_t j = 0; j < n; ++j)
+      {
+        dfs(i, j, 1);
+      }
+    }
+    return maxLen;
+  }
+};
+}
