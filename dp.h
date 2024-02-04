@@ -417,6 +417,43 @@ public:
 };
 }
 
+// 264. 丑数 II (中等)
+namespace N264
+{
+//给你一个整数 n ，请你找出并返回第 n 个 丑数 。
+//
+//丑数 就是质因子只包含 2、3 和 5 的正整数。
+class Solution {
+public:
+  int nthUglyNumber(int n) {
+    // dp[i]表示第i-1个丑数
+    vector<int> dp(n, 0);
+    dp[0] = 1;
+    // p2, p3, p5分别表示dp中的哪个位置的丑数乘以2, 3, 5可以得到下一个丑数
+    int p2 = 0, p3 = 0, p5 = 0;
+    for (int i = 1; i < n; ++i)
+    {
+      dp[i] = min({ dp[p2] * 2, dp[p3] * 3, dp[p5] * 5 });
+      if (dp[i] == dp[p2] * 2)
+      {
+        p2++;
+      }
+      if (dp[i] == dp[p3] * 3)
+      {
+        p3++;
+      }
+      if (dp[i] == dp[p5] * 5)
+      {
+        p5++;
+      }
+    }
+    return dp[n - 1];
+  }
+};
+}
+
+// 309. 买卖股票的最佳时机含冷冻期 (中等)
+
 // 2645. 构造有效字符串的最少插入数 (中等)
 namespace N2645
 {

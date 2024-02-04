@@ -86,8 +86,26 @@ TEST(N213SolutionTest, HandlePositiveInput) {
     EXPECT_EQ(solution.rob(input), expected);
   }
 }
-
 }
+
+// 264. 丑数 II (中等)
+namespace N264
+{
+TEST(N264SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  {
+    int input = 10;
+    int expected = 12;
+    EXPECT_EQ(solution.nthUglyNumber(input), expected);
+  }
+  {
+    int input = 1;
+    int expected = 1;
+    EXPECT_EQ(solution.nthUglyNumber(input), expected);
+  }
+}
+}
+
 
 // 2085. 统计出现过一次的公共字符串
 namespace N2085
@@ -143,6 +161,6 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N213*";
+  ::testing::GTEST_FLAG(filter) = "*N264*";
   return RUN_ALL_TESTS();
 }
