@@ -200,3 +200,58 @@ public:
   }
 };
 }
+
+// 357. 统计各位数字都不同的数字个数
+namespace N357
+{
+// 给你一个整数 n ，统计并返回各位数字都不同的数字 x 的个数，其中 0 <= x < 10^n 。
+// 效率低
+class Solution {
+public:
+  int countNumbersWithUniqueDigits(int n) {
+    int res = 0;
+    set<int> memo;
+    function<void(int)> dfs = [&](int depth) {
+      res++;
+      if (depth == n)
+      {
+        return;
+      }
+      for (int i = 0; i < 10; ++i)
+      {
+        if (i == 0 && depth == 0)
+        {
+          continue;
+        }
+        if (memo.count(i))
+        {
+          continue;
+        }
+        memo.insert(i);
+        dfs(depth + 1);
+        memo.erase(i);
+      }
+      };
+    dfs(0);
+    return res;
+  }
+};
+// 更优
+class Solution2 {
+public:
+  int countNumbersWithUniqueDigits(int n) {
+    if (n == 0)
+    {
+      return 1;
+    }
+    int res = 10;
+    int cur = 9;
+    for (int i = 2; i <= n; ++i)
+    {
+      cur *= 11 - i;
+      res += cur;
+    }
+    return res;
+  }
+};
+}
