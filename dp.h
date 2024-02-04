@@ -124,7 +124,7 @@ namespace N87
 class Solution {
 public:
   bool isScramble([[maybe_unused]] string s1, [[maybe_unused]] string s2) {
-
+    return false;
   }
 };
 }
@@ -305,9 +305,9 @@ public:
     // 由于骑士任意时刻的健康点数都不能小于1，所以需要反向dp
     dp[dungeon.size()][dungeon[0].size() - 1] = 1;
     dp[dungeon.size() - 1][dungeon[0].size()] = 1;
-    for (int i = dungeon.size() - 1; i >= 0; --i)
+    for (size_t i = dungeon.size() - 1; i >= 0; --i)
     {
-      for (int j = dungeon[0].size() - 1; j >= 0; --j)
+      for (size_t j = dungeon[0].size() - 1; j >= 0; --j)
       {
         dp[i][j] = max(1, min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j]);
       }
@@ -334,6 +334,85 @@ public:
       dp[i].second = max(dp[i - 1].first, dp[i - 1].second);
     }
     return max(dp[nums.size()].first, dp[nums.size()].second);
+  }
+};
+}
+
+// 213. 打家劫舍 II (中等)
+namespace N213
+{
+//你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。
+//
+//给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，今晚能够偷窃到的最高金额。
+class Solution {
+public:
+  int rob(vector<int>& nums) {
+    if (nums.size() == 1)
+    {
+      return nums[0];
+    }
+    int res = 0;
+    // dp[i].first表示偷窃到第i个房屋时的最大金额，dp[i].second表示不偷窃第i个房屋时的最大金额
+    vector<pair<int, int>> dp(nums.size(), { 0, 0 });
+    // 不偷窃第一个房屋
+    for (int i = 1; i < nums.size(); ++i)
+    {
+      if (1 == i)
+      {
+        dp[i].first = nums[i];
+        dp[i].second = 0;
+      }
+      else
+      {
+        dp[i].first = dp[i - 1].second + nums[i];
+        dp[i].second = max(dp[i - 1].first, dp[i - 1].second);
+      }
+    }
+    res = max(dp[nums.size() - 1].first, dp[nums.size() - 1].second);
+    // 偷窃第一个房屋
+    vector<pair<int, int>> dp2(nums.size(), { 0, 0 });
+    for (int i = 0; i < nums.size() - 1; ++i)
+    {
+      if (0 == i)
+      {
+        dp2[i].first = nums[i];
+        dp2[i].second = 0;
+      }
+      else
+      {
+        dp2[i].first = dp2[i - 1].second + nums[i];
+        dp2[i].second = max(dp2[i - 1].first, dp2[i - 1].second);
+      }
+    }
+    res = max(res, max(dp2[nums.size() - 2].first, dp2[nums.size() - 2].second));
+    return res;
+  }
+};
+}
+
+// 221. 最大正方形 (中等)
+namespace N221
+{
+//在一个由 '0' 和 '1' 组成的二维矩阵内，找到只包含 '1' 的最大正方形，并返回其面积。
+class Solution {
+public:
+  int maximalSquare(vector<vector<char>>& matrix) {
+    int m = static_cast<int>(matrix.size());
+    int n = static_cast<int>(matrix[0].size());
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+    int maxSide = 0;
+    for (int i = 1; i <= m; ++i)
+    {
+      for (int j = 1; j <= n; ++j)
+      {
+        if (matrix[i - 1][j - 1] == '1')
+        {
+          dp[i][j] = min({ dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1] }) + 1;
+          maxSide = max(maxSide, dp[i][j]);
+        }
+      }
+    }
+    return maxSide * maxSide;
   }
 };
 }

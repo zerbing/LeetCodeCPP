@@ -65,6 +65,30 @@ INSTANTIATE_TEST_CASE_P(
 );
 }
 
+// 213. 打家劫舍 II (中等)
+namespace N213
+{
+TEST(N213SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  {
+    std::vector<int> input = { 2, 3, 2 };
+    int expected = 3;
+    EXPECT_EQ(solution.rob(input), expected);
+  }
+  {
+    std::vector<int> input = { 1, 2, 3, 1 };
+    int expected = 4;
+    EXPECT_EQ(solution.rob(input), expected);
+  }
+  {
+    std::vector<int> input = { 1, 2, 3 };
+    int expected = 3;
+    EXPECT_EQ(solution.rob(input), expected);
+  }
+}
+
+}
+
 // 2085. 统计出现过一次的公共字符串
 namespace N2085
 {
@@ -119,6 +143,6 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N87*";
+  ::testing::GTEST_FLAG(filter) = "*N213*";
   return RUN_ALL_TESTS();
 }
