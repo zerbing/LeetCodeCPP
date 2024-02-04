@@ -525,7 +525,7 @@ public:
     vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
     for (int len = 2; len <= n; ++len)
     {
-      for (int i = 1; i - len + 1 <= n ; ++i)
+      for (int i = 1; i + len - 1 <= n ; ++i)
       {
         int j = i + len - 1;
         dp[i][j] = INT_MAX;
@@ -569,6 +569,36 @@ public:
 }
 
 // 396. 旋转函数 (中等)
+namespace N396
+{
+//给定一个长度为 n 的整数数组 nums 。
+//
+//假设 arrk 是数组 nums 顺时针旋转 k 个位置后的数组，我们定义 nums 的 旋转函数  F 为：
+//
+//F(k) = 0 * arrk[0] + 1 * arrk[1] + ... + (n - 1) * arrk[n - 1]
+//返回 F(0), F(1), ..., F(n - 1)中的最大值 。
+//
+//生成的测试用例让答案符合 32 位 整数。
+class Solution {
+public:
+  int maxRotateFunction(vector<int>& nums) {
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    int res = INT_MIN;
+    int cur = 0;
+    size_t n = nums.size();
+    for (size_t i = 0; i < n; ++i)
+    {
+      cur += static_cast<int>(i * nums[i]);
+    }
+    for (size_t i = 0; i < n; ++i)
+    {
+      cur += nums[i] * static_cast<int>(n) - sum;
+      res = max(res, cur);
+    }
+    return res;
+  }
+};
+}
 
 // 2645. 构造有效字符串的最少插入数 (中等)
 namespace N2645

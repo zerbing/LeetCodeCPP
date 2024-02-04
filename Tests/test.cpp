@@ -147,6 +147,31 @@ TEST(N375SolutionTest, HandlePositiveInput) {
 }
 }
 
+// 396. 旋转函数 (中等)
+namespace N396
+{
+TEST(N396SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  {
+    std::vector<int> input = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int expected = 330;
+    EXPECT_EQ(solution.maxRotateFunction(input), expected);
+  }
+
+  {
+    std::vector<int> input = { 4, 3, 2, 6 };
+    int expected = 26;
+    EXPECT_EQ(solution.maxRotateFunction(input), expected);
+  }
+  {
+    std::vector<int> input = { 100 };
+    int expected = 0;
+    EXPECT_EQ(solution.maxRotateFunction(input), expected);
+  }
+}
+
+}
+
 // 2085. 统计出现过一次的公共字符串
 namespace N2085
 {
@@ -201,6 +226,6 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N375*";
+  ::testing::GTEST_FLAG(filter) = "*N396*";
   return RUN_ALL_TESTS();
 }

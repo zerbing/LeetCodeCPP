@@ -19,6 +19,7 @@
 #include <unordered_set>
 #include <queue>
 #include <string>
+#include <numeric>
 
 using namespace std;
 
