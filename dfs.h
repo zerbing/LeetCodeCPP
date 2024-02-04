@@ -129,3 +129,40 @@ public:
   }
 };
 }
+
+// 397. 整数替换 (中等)
+namespace N397
+{
+//给定一个正整数 n ，你可以做如下操作：
+//
+//如果 n 是偶数，则用 n / 2替换 n 。
+//如果 n 是奇数，则可以用 n + 1或n - 1替换 n 。
+//返回 n 变为 1 所需的 最小替换次数 。
+class Solution {
+public:
+  int integerReplacement(int n) {
+    unordered_map<long long, long long> memo;
+    function<long long(long long)> dfs = [&](long long n) -> long long
+      {
+      if (n == 1)
+      {
+        return 0;
+      }
+      if (memo.count(n))
+      {
+        return memo[n];
+      }
+      if (n % 2 == 0)
+      {
+        memo[n] = dfs(n / 2) + 1;
+      }
+      else
+      {
+        memo[n] = min(dfs(n + 1), dfs(n - 1)) + 1;
+      }
+      return memo[n];
+      };
+    return static_cast<int>(dfs(n));
+  }
+};
+}
