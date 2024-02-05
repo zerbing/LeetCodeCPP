@@ -119,7 +119,21 @@ namespace N1402
 class Solution {
 public:
   int maxSatisfaction(vector<int>& satisfaction) {
-
+    sort(satisfaction.begin(), satisfaction.end());
+    int sum = accumulate(satisfaction.begin(), satisfaction.end(), 0);
+    int res = 0;
+    for (int i = 0; i < satisfaction.size(); ++i)
+    {
+      res += satisfaction[i] * (i + 1);
+    }
+    int tmp = res;
+    for (int i = 1; i <= satisfaction.size(); ++i)
+    {
+      tmp -= sum;
+      res = max(res, tmp);
+      sum -= satisfaction[i - 1];
+    }
+    return res;
   }
 };
 }
