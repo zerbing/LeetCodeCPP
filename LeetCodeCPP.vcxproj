@@ -154,7 +154,6 @@
     <ClInclude Include="hash.h" />
     <ClInclude Include="list_.h" />
     <ClInclude Include="math_.h" />
-    <ClInclude Include="monotonic_stack.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="pre_sum.h" />
     <ClInclude Include="source.h" />

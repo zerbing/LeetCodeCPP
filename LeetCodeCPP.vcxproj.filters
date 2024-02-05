@@ -37,9 +37,6 @@
     <ClInclude Include="double_pointer.h">
       <Filter>classified</Filter>
     </ClInclude>
-    <ClInclude Include="monotonic_stack.h">
-      <Filter>classified</Filter>
-    </ClInclude>
     <ClInclude Include="stack_.h">
       <Filter>classified</Filter>
     </ClInclude>
