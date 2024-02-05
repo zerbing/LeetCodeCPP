@@ -196,6 +196,7 @@ public:
     // 单调递减栈
     stack<size_t> st;
     vector<int> res(nums.size(), -1);
+    // 正向遍历
     for (size_t i = 0; i < nums.size() * 2; ++i)
     {
       while (!st.empty() && nums[st.top()] < nums[i % nums.size()])
@@ -217,6 +218,7 @@ public:
     // 单调递减栈
     stack<int> st;
     vector<int> res(nums.size(), -1);
+    // 反向遍历
     for (long long i = nums.size() * 2 - 1; i >= 0; --i)
     {
       while (!st.empty() && st.top() <= nums[i % nums.size()])
@@ -230,6 +232,42 @@ public:
       st.push(nums[i % nums.size()]);
     }
     return res;
+  }
+};
+}
+
+// 581. 最短无序连续子数组 (中等)
+namespace N581
+{
+//给你一个整数数组 nums ，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
+//
+//请你找出符合题意的 最短 子数组，并输出它的长度。
+class Solution {
+public:
+  int findUnsortedSubarray(vector<int>& nums) {
+    stack<int> st;
+    int left = nums.size();
+    for (int i = 0; i < nums.size(); ++i)
+    {
+      while (!st.empty() && nums[st.top()] > nums[i])
+      {
+        left = min(left, st.top());
+        st.pop();
+      }
+      st.push(i);
+    }
+    st = stack<int>();
+    int right = 0;
+    for (int i = nums.size() - 1; i >= 0; --i)
+    {
+      while (!st.empty() && nums[st.top()] < nums[i])
+      {
+        right = max(right, st.top());
+        st.pop();
+      }
+      st.push(i);
+    }
+    return right > left ? right - left + 1 : 0;
   }
 };
 }
