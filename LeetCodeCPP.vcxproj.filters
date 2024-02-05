@@ -67,5 +67,8 @@
     <ClInclude Include="genshin.h">
       <Filter>other</Filter>
     </ClInclude>
+    <ClInclude Include="math_.h">
+      <Filter>classified</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
