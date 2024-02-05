@@ -124,6 +124,35 @@ TEST(N309SolutionTest, HandlePositiveInput) {
 }
 }
 
+// 321. 拼接最大数 (困难)
+namespace N321
+{
+TEST(N321SolutionTest, HandlePositiveInput) {
+  Solution solution;
+  {
+    std::vector<int> input1 = { 8, 9 };
+    std::vector<int> input2 = { 3, 9 };
+    int k = 3;
+    std::vector<int> expected = { 9, 8, 9 };
+    EXPECT_EQ(solution.maxNumber(input1, input2, k), expected);
+  }
+  {
+    std::vector<int> input1 = { 3, 4, 6, 5 };
+    std::vector<int> input2 = { 9, 1, 2, 5, 8, 3 };
+    int k = 5;
+    std::vector<int> expected = { 9, 8, 6, 5, 3 };
+    EXPECT_EQ(solution.maxNumber(input1, input2, k), expected);
+  }
+  {
+    std::vector<int> input1 = { 6, 7 };
+    std::vector<int> input2 = { 6, 0, 4 };
+    int k = 5;
+    std::vector<int> expected = { 6, 7, 6, 0, 4 };
+    EXPECT_EQ(solution.maxNumber(input1, input2, k), expected);
+  }
+}
+}
+
 // 375. 猜数字大小 II (中等)
 namespace N375
 {
@@ -226,6 +255,6 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N396*";
+  ::testing::GTEST_FLAG(filter) = "*N321*";
   return RUN_ALL_TESTS();
 }

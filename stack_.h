@@ -87,6 +87,117 @@ public:
 };
 }
 
+// 321. 拼接最大数 (困难)
+namespace N321
+{
+//给定长度分别为 m 和 n 的两个数组，其元素由 0 - 9 构成，表示两个自然数各位上的数字。现在从这两个数组中选出 k(k <= m + n) 个数字拼接成一个新的数，要求从同一个数组中取出的数字保持其在原数组中的相对顺序。
+//
+//求满足该条件的最大数。结果返回一个表示该最大数的长度为 k 的数组。
+//
+//说明 : 请尽可能地优化你算法的时间和空间复杂度。
+// 超时
+class Solution {
+public:
+  vector<int> maxNumber(vector<int>& nums1, vector<int>& nums2, int k) {
+    vector<int> res;
+    function<void(int, int, vector<int>&)> dfs = [&](int index1, int index2, vector<int>& nums) {
+      if (!nums.empty() && !res.empty() && lexicographical_compare(nums.begin(), nums.end(), res.begin(), res.begin() + nums.size()))
+      {
+        return;
+      }
+      if (nums.size() == k)
+      {
+        if (res.empty() || res < nums)
+        {
+          res = nums;
+        }
+        return;
+      }
+      for (int i = index1; i < nums1.size(); ++i)
+      {
+        nums.push_back(nums1[i]);
+        dfs(i + 1, index2, nums);
+        nums.pop_back();
+      }
+      for (int i = index2; i < nums2.size(); ++i)
+      {
+        nums.push_back(nums2[i]);
+        dfs(index1, i + 1, nums);
+        nums.pop_back();
+      }
+      };
+    vector<int> nums;
+    dfs(0, 0, nums);
+    return res;
+  }
+};
+// todo
+class Solution2 {
+public:
+  vector<int> maxNumber([[maybe_unused]] vector<int>& nums1, [[maybe_unused]] vector<int>& nums2, int k) {
+
+  }
+};
+}
+
+// 402. 移掉 K 位数字 (中等)
+namespace N402
+{
+// 给你一个以字符串表示的非负整数 num 和一个整数 k ，移除这个数中的 k 位数字，使得剩下的数字最小。请你以字符串形式返回这个最小的数字。
+class Solution {
+public:
+  string removeKdigits(string num, int k) {
+    stack<char> st;
+    for (int i = 0; i < num.size(); ++i)
+    {
+      while (k > 0 && !st.empty() && st.top() > num[i])
+      {
+        st.pop();
+        --k;
+      }
+      st.push(num[i]);
+    }
+    while (k > 0)
+    {
+      st.pop();
+      --k;
+    }
+    string res;
+    while (!st.empty())
+    {
+      res += st.top();
+      st.pop();
+    }
+    reverse(res.begin(), res.end());
+    // 去掉前导0
+    int index = 0;
+    while (index < res.size() && res[index] == '0')
+    {
+      ++index;
+    }
+    if (index == res.size())
+    {
+      return "0";
+    }
+    return res.substr(index);
+  }
+};
+}
+
+// 503. 下一个更大元素 II (中等)
+namespace N503
+{
+//给定一个循环数组 nums （ nums[nums.length - 1] 的下一个元素是 nums[0] ），返回 nums 中每个元素的 下一个更大元素 。
+//
+//数字 x 的 下一个更大的元素 是按数组遍历顺序，这个数字之后的第一个比它更大的数，这意味着你应该循环地搜索它的下一个更大的数。如果不存在，则输出 - 1 。
+class Solution {
+public:
+  vector<int> nextGreaterElements(vector<int>& nums) {
+
+  }
+};
+}
+
 // 2865. 美丽塔 I (困难)
 namespace N2865
 {

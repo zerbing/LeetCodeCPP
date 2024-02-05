@@ -33,7 +33,6 @@ using namespace std;
 #include "hash.h"
 #include "binary_tree.h"
 #include "stack_.h"
-#include "monotonic_stack.h"
 #include "dfs.h"
 #include "bfs.h"
 #include "pre_sum.h"
