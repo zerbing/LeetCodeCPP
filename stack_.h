@@ -193,7 +193,43 @@ namespace N503
 class Solution {
 public:
   vector<int> nextGreaterElements(vector<int>& nums) {
-
+    // 单调递减栈
+    stack<size_t> st;
+    vector<int> res(nums.size(), -1);
+    for (size_t i = 0; i < nums.size() * 2; ++i)
+    {
+      while (!st.empty() && nums[st.top()] < nums[i % nums.size()])
+      {
+        res[st.top()] = nums[i % nums.size()];
+        st.pop();
+      }
+      if (i < nums.size())
+      {
+        st.push(i);
+      }
+    }
+    return res;
+  }
+};
+class Solution2 {
+public:
+  vector<int> nextGreaterElements(vector<int>& nums) {
+    // 单调递减栈
+    stack<int> st;
+    vector<int> res(nums.size(), -1);
+    for (long long i = nums.size() * 2 - 1; i >= 0; --i)
+    {
+      while (!st.empty() && st.top() <= nums[i % nums.size()])
+      {
+        st.pop();
+      }
+      if (!st.empty())
+      {
+        res[i % nums.size()] = st.top();
+      }
+      st.push(nums[i % nums.size()]);
+    }
+    return res;
   }
 };
 }
