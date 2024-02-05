@@ -122,11 +122,13 @@ public:
     sort(satisfaction.begin(), satisfaction.end());
     int sum = accumulate(satisfaction.begin(), satisfaction.end(), 0);
     int res = 0;
+    // 评分低的菜越早做越好
     for (int i = 0; i < satisfaction.size(); ++i)
     {
       res += satisfaction[i] * (i + 1);
     }
     int tmp = res;
+    // 逐步放弃评分最低的菜
     for (int i = 1; i <= satisfaction.size(); ++i)
     {
       tmp -= sum;
