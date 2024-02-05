@@ -22,6 +22,7 @@ public:
     vector<long long> leftHeights(maxHeights.size(), 0);
     vector<long long> rightHeights(maxHeights.size(), 0);
     // 计算左边的高度
+    // 单调递增栈
     stack<int> st;
     int n = static_cast<int>(maxHeights.size());
     for (int i = 0; i < n; ++i)

@@ -8,10 +8,16 @@
     <Filter Include="classified">
       <UniqueIdentifier>{e6b41080-5fce-48b1-aae4-bf854ac16e26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="other">
+      <UniqueIdentifier>{6a96093d-fc46-46ef-bd03-fc71defe2ed2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="genshin.cpp">
+      <Filter>other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source.h" />
@@ -57,6 +63,9 @@
     </ClInclude>
     <ClInclude Include="hash.h">
       <Filter>classified</Filter>
+    </ClInclude>
+    <ClInclude Include="genshin.h">
+      <Filter>other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
