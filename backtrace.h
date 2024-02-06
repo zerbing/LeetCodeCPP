@@ -1,7 +1,7 @@
 #pragma once
 
 // 39. 组合总和 (中等)
-namespace N39
+namespace n39
 {
 class Solution {
   vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
@@ -34,7 +34,7 @@ class Solution {
 }
 
 // 40. 组合总和 II (中等)
-namespace N40
+namespace n40
 {
 class Solution {
   vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
@@ -73,7 +73,7 @@ class Solution {
 }
 
 // 47. 全排列 II (中等)
-namespace N47
+namespace n47
 {
 class Solution {
   // 给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列
@@ -117,7 +117,7 @@ class Solution {
 }
 
 // 52. N 皇后 II (困难)
-namespace N52
+namespace n52
 {
 class Solution {
 public:
@@ -159,7 +159,7 @@ public:
 }
 
 // 140. 单词拆分 II (困难)
-namespace N140
+namespace n140
 {
 //给定一个字符串 s 和一个字符串字典 wordDict ，在字符串 s 中增加空格来构建一个句子，使得句子中所有的单词都在词典中。以任意顺序 返回所有这些可能的句子。
 //
@@ -202,7 +202,7 @@ public:
 }
 
 // 357. 统计各位数字都不同的数字个数
-namespace N357
+namespace n357
 {
 // 给你一个整数 n ，统计并返回各位数字都不同的数字 x 的个数，其中 0 <= x < 10^n 。
 // 效率低，指数级别

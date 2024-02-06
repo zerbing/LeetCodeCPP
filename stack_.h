@@ -1,7 +1,7 @@
 #pragma once
 
 // 20. 有效的括号 (简单)
-namespace N20
+namespace n20
 {
 //给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
 
@@ -47,7 +47,7 @@ public:
 }
 
 // 316. 去除重复字母 (中等)
-namespace N316
+namespace n316
 {
 //给你一个字符串 s ，请你去除字符串中重复的字母，使得每个字母只出现一次。需保证 返回结果的字典序最小（要求不能打乱其他字符的相对位置）。
 class Solution {
@@ -88,7 +88,7 @@ public:
 }
 
 // 321. 拼接最大数 (困难)
-namespace N321
+namespace n321
 {
 //给定长度分别为 m 和 n 的两个数组，其元素由 0 - 9 构成，表示两个自然数各位上的数字。现在从这两个数组中选出 k(k <= m + n) 个数字拼接成一个新的数，要求从同一个数组中取出的数字保持其在原数组中的相对顺序。
 //
@@ -134,14 +134,14 @@ public:
 // todo
 class Solution2 {
 public:
-  vector<int> maxNumber([[maybe_unused]] vector<int>& nums1, [[maybe_unused]] vector<int>& nums2, int k) {
+  vector<int> maxNumber([[maybe_unused]] vector<int>& nums1, [[maybe_unused]] vector<int>& nums2, [[maybe_unused]] int k) {
 
   }
 };
 }
 
 // 402. 移掉 K 位数字 (中等)
-namespace N402
+namespace n402
 {
 // 给你一个以字符串表示的非负整数 num 和一个整数 k ，移除这个数中的 k 位数字，使得剩下的数字最小。请你以字符串形式返回这个最小的数字。
 class Solution {
@@ -185,7 +185,7 @@ public:
 }
 
 // 503. 下一个更大元素 II (中等)
-namespace N503
+namespace n503
 {
 //给定一个循环数组 nums （ nums[nums.length - 1] 的下一个元素是 nums[0] ），返回 nums 中每个元素的 下一个更大元素 。
 //
@@ -237,7 +237,7 @@ public:
 }
 
 // 581. 最短无序连续子数组 (中等)
-namespace N581
+namespace n581
 {
 //给你一个整数数组 nums ，你需要找出一个 连续子数组 ，如果对这个子数组进行升序排序，那么整个数组都会变为升序排序。
 //
@@ -246,7 +246,7 @@ class Solution {
 public:
   int findUnsortedSubarray(vector<int>& nums) {
     stack<int> st;
-    int left = nums.size();
+    int left = static_cast<int>(nums.size());
     for (int i = 0; i < nums.size(); ++i)
     {
       while (!st.empty() && nums[st.top()] > nums[i])
@@ -258,7 +258,7 @@ public:
     }
     st = stack<int>();
     int right = 0;
-    for (int i = nums.size() - 1; i >= 0; --i)
+    for (int i = static_cast<int>(nums.size()) - 1; i >= 0; --i)
     {
       while (!st.empty() && nums[st.top()] < nums[i])
       {
@@ -273,7 +273,7 @@ public:
 }
 
 // 2865. 美丽塔 I (困难)
-namespace N2865
+namespace n2865
 {
 //给你一个长度为 n 下标从 0 开始的整数数组 maxHeights 。
 //

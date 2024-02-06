@@ -1,7 +1,7 @@
 #include "pch.h"
 
 // 87. 扰乱字符串
-namespace N87
+namespace n87
 {
 TEST(N87SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -12,7 +12,7 @@ TEST(N87SolutionTest, HandlePositiveInput) {
 }
 
 // 96. 不同的二叉搜索树
-namespace N96
+namespace n96
 {
 struct TestCase
 {
@@ -66,7 +66,7 @@ INSTANTIATE_TEST_CASE_P(
 }
 
 // 213. 打家劫舍 II (中等)
-namespace N213
+namespace n213
 {
 TEST(N213SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -89,7 +89,7 @@ TEST(N213SolutionTest, HandlePositiveInput) {
 }
 
 // 264. 丑数 II (中等)
-namespace N264
+namespace n264
 {
 TEST(N264SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -107,7 +107,7 @@ TEST(N264SolutionTest, HandlePositiveInput) {
 }
 
 // 309. 最佳买卖股票时机含冷冻期 (中等)
-namespace N309
+namespace n309
 {
 TEST(N309SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -125,7 +125,7 @@ TEST(N309SolutionTest, HandlePositiveInput) {
 }
 
 // 321. 拼接最大数 (困难)
-namespace N321
+namespace n321
 {
 TEST(N321SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -154,7 +154,7 @@ TEST(N321SolutionTest, HandlePositiveInput) {
 }
 
 // 375. 猜数字大小 II (中等)
-namespace N375
+namespace n375
 {
 TEST(N375SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -177,7 +177,7 @@ TEST(N375SolutionTest, HandlePositiveInput) {
 }
 
 // 396. 旋转函数 (中等)
-namespace N396
+namespace n396
 {
 TEST(N396SolutionTest, HandlePositiveInput) {
   Solution solution;
@@ -202,7 +202,7 @@ TEST(N396SolutionTest, HandlePositiveInput) {
 }
 
 // 2085. 统计出现过一次的公共字符串
-namespace N2085
+namespace n2085
 {
 class N2085SolutionTest : public ::testing::TestWithParam<std::tuple<std::vector<std::string>, std::vector<std::string>, int>>
 {
@@ -235,7 +235,7 @@ INSTANTIATE_TEST_CASE_P(
 }
 
 // 2670. 找出不同元素数目差数组
-namespace N2670
+namespace n2670
 {
 TEST(N2670SolutionTest, HandlePositiveInput) {
   Solution solution;

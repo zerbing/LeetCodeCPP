@@ -1,7 +1,7 @@
 #pragma once
 
 // 97. 交错字符串 (中等)
-namespace N97
+namespace n97
 {
 //给定三个字符串 s1、s2、s3，请你帮忙验证 s3 是否是由 s1 和 s2 交错 组成的。
 //
@@ -46,7 +46,7 @@ public:
 }
 
 // 120. 三角形最小路径和 (中等)
-namespace N120
+namespace n120
 {
 //给定一个三角形 triangle ，找出自顶向下的最小路径和。
 //
@@ -87,7 +87,7 @@ public:
 }
 
 // 329. 矩阵中的最长递增路径 (困难)
-namespace N329
+namespace n329
 {
 //给定一个 m x n 整数矩阵 matrix ，找出其中 最长递增路径 的长度。
 //
@@ -131,7 +131,7 @@ public:
 }
 
 // 397. 整数替换 (中等)
-namespace N397
+namespace n397
 {
 //给定一个正整数 n ，你可以做如下操作：
 //

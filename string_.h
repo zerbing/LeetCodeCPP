@@ -1,7 +1,7 @@
 #pragma once
 
 // 383. 赎金信 (简单)
-namespace N383
+namespace n383
 {
 //给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
 //
@@ -29,7 +29,7 @@ class Solution {
 }
 
 // 2678. 老人的数目 (简单)
-namespace N2678
+namespace n2678
 {
 //给你一个下标从 0 开始的字符串 details 。details 中每个元素都是一位乘客的信息，信息用长度为 15 的字符串表示，表示方式如下：
 //
@@ -56,7 +56,7 @@ public:
 }
 
 // 2696. 删除子串后的字符串最小长度 (简单)
-namespace N2696
+namespace n2696
 {
 class Solution {
 public:
@@ -83,7 +83,7 @@ public:
 }
 
 // 2707. 字符串中的额外字符 (中等)
-namespace N2707
+namespace n2707
 {
 //给你一个下标从 0 开始的字符串 s 和一个单词字典 dictionary 。你需要将 s 分割成若干个 互不重叠 的子字符串，每个子字符串都在 dictionary 中出现过。s 中可能会有一些 额外的字符 不在任何子字符串中。
 //请你采取最优策略分割 s ，使剩下的字符 最少 。
@@ -116,7 +116,7 @@ public:
 }
 
 // 2744. 最大字符串配对数目 (简单)
-namespace N2744
+namespace n2744
 {
 //给你一个下标从 0 开始的数组 words ，数组中包含 互不相同 的字符串。
 //
@@ -148,7 +148,7 @@ public:
 }
 
 // 2788. 按分隔符拆分字符串 (简单)
-namespace N2788
+namespace n2788
 {
 //给你一个字符串数组 words 和一个字符 separator ，请你按 separator 拆分 words 中的每个字符串。
 //
@@ -192,7 +192,7 @@ public:
 }
 
 // 2810. 故障键盘 (简单)
-namespace N2810
+namespace n2810
 {
 //你的笔记本键盘存在故障，每当你在上面输入字符 'i' 时，它会反转你所写的字符串。而输入其他字符则可以正常工作。
 //

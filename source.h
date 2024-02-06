@@ -1,7 +1,7 @@
 #pragma once
 
 // 466. 统计重复个数 (困难)
-namespace N466
+namespace n466
 {
 //定义 str = [s, n] 表示 str 由 n 个字符串 s 连接构成。
 //
@@ -20,7 +20,7 @@ public:
 }
 
 // 2719. 统计整数数目 (困难)
-namespace N2719
+namespace n2719
 {
 //给你两个数字字符串 num1 和 num2 ，以及两个整数 max_sum 和 min_sum 。如果一个整数 x 满足以下条件，我们称它是一个好整数：
 //
@@ -37,7 +37,7 @@ public:
 }
 
 // 2809. 使数组和小于等于 x 的最少时间 (困难)
-namespace N2809
+namespace n2809
 {
 //给你两个长度相等下标从 0 开始的整数数组 nums1 和 nums2 。每一秒，对于所有下标 0 <= i < nums1.length ，nums1[i] 的值都增加 nums2[i] 。操作 完成后 ，你可以进行如下操作：
 //
@@ -53,7 +53,7 @@ public:
 }
 
 // 2846. 边权重均等查询 (困难)
-namespace N2846
+namespace n2846
 {
 //现有一棵由 n 个节点组成的无向树，节点按从 0 到 n - 1 编号。给你一个整数 n 和一个长度为 n - 1 的二维整数数组 edges ，其中 edges[i] = [ui, vi, wi] 表示树中存在一条位于节点 ui 和节点 vi 之间、权重为 wi 的边。
 //
@@ -73,4 +73,4 @@ public:
 };
 }
 
-
+// LCP 30. 魔塔游戏

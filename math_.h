@@ -1,7 +1,7 @@
 #pragma once
 
 // 2591. 将钱分给最多的儿童 (简单）
-namespace N2591
+namespace n2591
 {
 //给你一个整数 money ，表示你总共有的钱数（单位为美元）和另一个整数 children ，表示你要将钱分配给多少个儿童。
 //

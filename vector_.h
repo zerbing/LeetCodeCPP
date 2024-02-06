@@ -1,7 +1,7 @@
 #pragma once
 
 // 447. 回旋镖的数量 (中等)
-namespace N447
+namespace n447
 {
 //给定平面上 n 对 互不相同 的点 points ，其中 points[i] = [xi, yi] 。回旋镖 是由点(i, j, k) 表示的元组 ，其中 i 和 j 之间的欧式距离和 i 和 k 之间的欧式距离相等（需要考虑元组的顺序）。
 //
@@ -45,7 +45,7 @@ class Solution {
 }
 
 // 2706. 购买两块巧克力 (简单)
-namespace N2706
+namespace n2706
 {
 //给你一个整数数组 prices ，它表示一个商店里若干巧克力的价格。同时给你一个整数 money ，表示你一开始拥有的钱数。
 //
@@ -65,7 +65,7 @@ public:
 }
 
 // 2765. 最长交替子数组 (中等)
-namespace N2765
+namespace n2765
 {
 //给你一个下标从 0 开始的整数数组 nums 。如果 nums 中长度为 m 的子数组 s 满足以下条件，我们称它是一个 交替子数组 ：
 //

@@ -1,7 +1,7 @@
 #pragma once
 
 // 94. 二叉树的中序遍历 （简单)
-namespace N94
+namespace n94
 {
 //给定一个二叉树的根节点 root ，返回它的 中序 遍历。
 struct TreeNode {
@@ -56,7 +56,7 @@ public:
 }
 
 // 96. 不同的二叉搜索树 （中等)
-namespace N96
+namespace n96
 {
 // 给你一个整数 n ，求恰由 n 个节点组成且节点值从 1 到 n 互不相同的 二叉搜索树 有多少种？返回满足题意的二叉搜索树的种数。
 class Solution {
@@ -102,7 +102,7 @@ public:
 }
 
 // 99. 恢复二叉搜索树 （困难)
-namespace N99
+namespace n99
 {
 // 给你二叉搜索树的根节点 root ，该树中的 恰好 两个节点的值被错误地交换。请在不改变其结构的情况下，恢复这棵树
 struct TreeNode {
@@ -180,7 +180,7 @@ public:
 }
 
 // 100. 相同的树 （简单)
-namespace N100
+namespace n100
 {
 //给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
 //
@@ -214,7 +214,7 @@ public:
 }
 
 // 106. 从中序与后序遍历序列构造二叉树 （中等)
-namespace N106
+namespace n106
 {
 //给定两个整数数组 inorder 和 postorder ，其中 inorder 是二叉树的中序遍历， postorder 是同一棵树的后序遍历，请你构造并返回这颗 二叉树。
 struct TreeNode {
@@ -255,7 +255,7 @@ public:
 }
 
 // 109. 有序链表转换二叉搜索树 （中等)
-namespace N109
+namespace n109
 {
 //给定一个单链表的头节点  head ，其中的元素 按升序排序 ，将其转换为高度平衡的二叉搜索树。
 //
@@ -312,7 +312,7 @@ public:
 }
 
 // 110. 平衡二叉树 （简单)
-namespace N110
+namespace n110
 {
 //给定一个二叉树，判断它是否是高度平衡的二叉树。
 //
@@ -352,7 +352,7 @@ public:
 }
 
 // 111. 二叉树的最小深度 （简单)
-namespace N111
+namespace n111
 {
 //给定一个二叉树，找出其最小深度。
 //
@@ -406,7 +406,7 @@ public:
 }
 
 // 112. 路径总和 (简单)
-namespace N112
+namespace n112
 {
 //给你二叉树的根节点 root 和一个表示目标和的整数 targetSum 。判断该树中是否存在 根节点到叶子节点 的路径，这条路径上所有节点值相加等于目标和 targetSum 。如果存在，返回 true ；否则，返回 false 。
 //
@@ -444,7 +444,7 @@ public:
 }
 
 // 113. 路径总和 II (中等)
-namespace N113
+namespace n113
 {
 //给你二叉树的根节点 root 和一个整数目标和 targetSum ，找出所有 从根节点到叶子节点 路径总和等于给定目标和的路径。
 //
@@ -485,7 +485,7 @@ public:
 }
 
 // 116. 填充每个节点的下一个右侧节点指针 (中等)
-namespace N116
+namespace n116
 {
 //给定一个 完美二叉树 ，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
 //
@@ -549,7 +549,7 @@ public:
 }
 
 // 117. 填充每个节点的下一个右侧节点指针 II (中等)
-namespace N117
+namespace n117
 {
 //给定一个二叉树：
 
@@ -613,7 +613,7 @@ public:
 }
 
 // 124. 二叉树中的最大路径和 (困难)
-namespace N124
+namespace n124
 {
 //二叉树中的 路径 被定义为一条节点序列，序列中每对相邻节点之间都存在一条边。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。
 //
@@ -651,7 +651,7 @@ public:
 }
 
 // 129. 求根到叶子节点数字之和 (中等)
-namespace N129
+namespace n129
 {
 //给你一个二叉树的根节点 root ，树中每个节点都存放有一个 0 到 9 之间的数字。
 //每条从根节点到叶节点的路径都代表一个数字：
@@ -695,7 +695,7 @@ public:
 }
 
 // 144. 二叉树的前序遍历 (简单)
-namespace N144
+namespace n144
 {
 // 给你二叉树的根节点 root ，返回它节点值的 前序 遍历。
 // Definition for a binary tree node.
@@ -731,7 +731,7 @@ public:
 }
 
 // 145. 二叉树的后序遍历 (简单)
-namespace N145
+namespace n145
 {
 // 给你一棵二叉树的根节点 root ，返回其节点值的 后序遍历 。
 // Definition for a binary tree node.
@@ -777,7 +777,7 @@ public:
 }
 
 // 173. 二叉搜索树迭代器 (中等)
-namespace N173
+namespace n173
 {
 //实现一个二叉搜索树迭代器类BSTIterator ，表示一个按中序遍历二叉搜索树（BST）的迭代器：
 //BSTIterator(TreeNode root) 初始化 BSTIterator 类的一个对象。BST 的根节点 root 会作为构造函数的一部分给出。指针应初始化为一个不存在于 BST 中的数字，且该数字小于 BST 中的任何元素。
@@ -836,7 +836,7 @@ private:
 }
 
 // 337. 打家劫舍 III (中等)
-namespace N337
+namespace n337
 {
 //小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为 root 。
 //

@@ -1,7 +1,7 @@
 #pragma once
 
 // 292. Nim 游戏 (简单)
-namespace N292
+namespace n292
 {
 //你和你的朋友，两个人一起玩 Nim 游戏：
 //
@@ -19,7 +19,7 @@ public:
 }
 
 // 670. 最大交换 (中等)
-namespace N670
+namespace n670
 {
 // 给定一个非负整数，你至多可以交换一次数字中的任意两位。返回你能得到的最大值。
 class Solution {
@@ -59,7 +59,7 @@ public:
 }
 
 // 1686. 石子游戏 VI (中等)
-namespace N1686
+namespace n1686
 {
 //Alice 和 Bob 轮流玩一个游戏，Alice 先手。
 
@@ -107,7 +107,7 @@ public:
 }
 
 // 1402. 做菜顺序 (困难)
-namespace N1402
+namespace n1402
 {
 //一个厨师收集了他 n 道菜的满意程度 satisfaction ，这个厨师做出每道菜的时间都是 1 单位时间。
 //

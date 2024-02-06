@@ -1,7 +1,7 @@
 #pragma once
 
 // 2085. 统计出现过一次的公共字符串 (简单)
-namespace N2085
+namespace n2085
 {
 // 给你两个字符串数组 words1 和 words2 ，请你返回在两个字符串数组中 都恰好出现一次 的字符串的数目。
 class Solution {
@@ -31,7 +31,7 @@ public:
 }
 
 // 2670. 找出不同元素数目差数组 (中等)
-namespace N2670
+namespace n2670
 {
 //给你一个下标从 0 开始的数组 nums ，数组长度为 n 。
 //
@@ -66,7 +66,7 @@ public:
 }
 
 // LCR 004. 只出现一次的数字 II (中等)
-namespace LCR004
+namespace lcr004
 {
 // 给你一个整数数组 nums ，除某个元素仅出现 一次 外，其余每个元素都恰出现 三次 。请你找出并返回那个只出现了一次的元素。
 class Solution {
