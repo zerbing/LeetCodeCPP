@@ -156,6 +156,7 @@
     <ClInclude Include="math_.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="pre_sum.h" />
+    <ClInclude Include="queue_.h" />
     <ClInclude Include="source.h" />
     <ClInclude Include="stack_.h" />
     <ClInclude Include="binary_tree.h" />

@@ -67,5 +67,8 @@
     <ClInclude Include="math_.h">
       <Filter>classified</Filter>
     </ClInclude>
+    <ClInclude Include="queue_.h">
+      <Filter>classified</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

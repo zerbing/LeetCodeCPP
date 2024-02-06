@@ -277,12 +277,30 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 // LCP 30. Ä§ËþÓÎÏ· (ÖÐµÈ)
 namespace lcp30
 {
-TEST(LCP30SolutionTest, HandleNormalInput) {
-  Solution solution;
+class LCP30SolutionTest : public ::testing::Test {
+protected:
+  Solution solution1;
+  Solution2 solution2;
+};
+
+TEST_F(LCP30SolutionTest, HandlesNormalInput) {
   {
-    std::vector<int> input = { 37488,87406,34033,61302,36554,43955,-39745,-89643,-1068 };
+    std::vector<int> input = { 100, 100, 100, -250, -60, -140, -50, -50, 100, 150 };
+    int expected = 1;
+    EXPECT_EQ(solution1.magicTower(input), expected);
+    EXPECT_EQ(solution2.magicTower(input), expected);
+  }
+  {
+    std::vector<int> input = { -200, -300, 400, 500 };
+    int expected = 2;
+    EXPECT_EQ(solution1.magicTower(input), expected);
+    EXPECT_EQ(solution2.magicTower(input), expected);
+  }
+  {
+    std::vector<int> input = { 100, 100, 100, -10 };
     int expected = 0;
-    EXPECT_EQ(solution.magicTower(input), expected);
+    EXPECT_EQ(solution1.magicTower(input), expected);
+    EXPECT_EQ(solution2.magicTower(input), expected);
   }
 }
 }
@@ -290,6 +308,6 @@ TEST(LCP30SolutionTest, HandleNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*lcp30*";
+  ::testing::GTEST_FLAG(filter) = "*LCP30*";
   return RUN_ALL_TESTS();
 }

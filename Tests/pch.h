@@ -38,5 +38,6 @@ using namespace std;
 #include "pre_sum.h"
 #include "greedy.h"
 #include "math_.h"
+#include "queue_.h"
 
 #include "gtest/gtest.h"
