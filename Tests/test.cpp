@@ -198,7 +198,29 @@ TEST(N396SolutionTest, HandlePositiveInput) {
     EXPECT_EQ(solution.maxRotateFunction(input), expected);
   }
 }
+}
 
+// 581. 最短无序连续子数组 (中等)
+namespace n581
+{
+TEST(N581SolutionTest, HandleNormalInput) {
+  Solution solution;
+  {
+    std::vector<int> input = { 2, 6, 4, 8, 10, 9, 15 };
+    int expected = 5;
+    EXPECT_EQ(solution.findUnsortedSubarray(input), expected);
+  }
+  {
+    std::vector<int> input = { 1, 2, 3, 4 };
+    int expected = 0;
+    EXPECT_EQ(solution.findUnsortedSubarray(input), expected);
+  }
+  {
+    std::vector<int> input = { 1 };
+    int expected = 0;
+    EXPECT_EQ(solution.findUnsortedSubarray(input), expected);
+  }
+}
 }
 
 // 2085. 统计出现过一次的公共字符串
@@ -252,9 +274,22 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 }
 }
 
+// LCP 30. 魔塔游戏 (中等)
+namespace lcp30
+{
+TEST(LCP30SolutionTest, HandleNormalInput) {
+  Solution solution;
+  {
+    std::vector<int> input = { 37488,87406,34033,61302,36554,43955,-39745,-89643,-1068 };
+    int expected = 0;
+    EXPECT_EQ(solution.magicTower(input), expected);
+  }
+}
+}
+
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N321*";
+  ::testing::GTEST_FLAG(filter) = "*lcp30*";
   return RUN_ALL_TESTS();
 }
