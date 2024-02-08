@@ -1,4 +1,4 @@
-#pragma once
+  #pragma once
 
 // 466. 统计重复个数 (困难)
 namespace n466
