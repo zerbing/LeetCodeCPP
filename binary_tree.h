@@ -835,6 +835,55 @@ private:
  */
 }
 
+// 236. 二叉树的最近公共祖先 (中等)
+namespace n236
+{
+//给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+//
+//百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+// Definition for a binary tree node.
+struct TreeNode {
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+class Solution {
+public:
+  TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if (nullptr == root || root == p || root == q)
+    {
+      return root;
+    }
+    TreeNode* res = nullptr;
+    function<bool(TreeNode* root, TreeNode* p, TreeNode*q)> dfs = [&](TreeNode* root, TreeNode* p, TreeNode* q)->bool
+      {
+        if (nullptr == root)
+        {
+          return false;
+        }
+        if (root == p || root == q)
+        {
+          if (dfs(root->left, p, q) || dfs(root->right, p, q))
+          {
+            res = root;
+          }
+          return true;
+        }
+        bool left = dfs(root->left, p, q);
+        bool right = dfs(root->right, p, q);
+        if (left && right)
+        {
+          res = root;
+        }
+        return left || right;
+      };
+    dfs(root, p, q);
+    return res;
+  }
+};
+}
+
 // 337. 打家劫舍 III (中等)
 namespace n337
 {
