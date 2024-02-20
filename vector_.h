@@ -1,5 +1,30 @@
 #pragma once
 
+// 283. 移动零
+namespace n283
+{
+//给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+//
+//请注意 ，必须在不复制数组的情况下原地对数组进行操作。
+class Solution {
+public:
+  void moveZeroes(vector<int>& nums) {
+    int n = nums.size();
+    int left = 0;
+    int right = 0;
+    while (right < n)
+    {
+      if (nums[right] != 0)
+      {
+        swap(nums[left], nums[right]);
+        left++;
+      }
+      right++;
+    }
+  }
+};
+}
+
 // 447. 回旋镖的数量 (中等)
 namespace n447
 {
@@ -60,6 +85,40 @@ public:
       return money;
     }
     return money - prices[0] - prices[1];
+  }
+};
+}
+
+// 2562. 找出数组的串联值 (简单）
+namespace n2562
+{
+//给你一个下标从 0 开始的整数数组 nums 。
+//
+//现定义两个数字的 串联 是由这两个数值串联起来形成的新数字。
+//
+//例如，15 和 49 的串联是 1549 。
+//nums 的 串联值 最初等于 0 。执行下述操作直到 nums 变为空：
+//
+//如果 nums 中存在不止一个数字，分别选中 nums 中的第一个元素和最后一个元素，将二者串联得到的值加到 nums 的 串联值 上，然后从 nums 中删除第一个和最后一个元素。
+//如果仅存在一个元素，则将该元素的值加到 nums 的串联值上，然后删除这个元素。
+//返回执行完所有操作后 nums 的串联值。
+class Solution {
+public:
+  long long findTheArrayConcVal(vector<int>& nums) {
+    int i = 0;
+    int j = nums.size() - 1;
+    long long res = 0;
+    while (i < j)
+    {
+      res += stoi(to_string(nums[i]) + to_string(nums[j]));
+      i++;
+      j--;
+    }
+    if (i == j)
+    {
+      res += nums[i];
+    }
+    return res;
   }
 };
 }

@@ -835,6 +835,55 @@ private:
  */
 }
 
+// 236. 二叉树的最近公共祖先 (中等)
+namespace n236
+{
+//给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+//
+//百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+// Definition for a binary tree node.
+struct TreeNode {
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+class Solution {
+public:
+  TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if (nullptr == root || root == p || root == q)
+    {
+      return root;
+    }
+    TreeNode* res = nullptr;
+    function<bool(TreeNode* root, TreeNode* p, TreeNode*q)> dfs = [&](TreeNode* root, TreeNode* p, TreeNode* q)->bool
+      {
+        if (nullptr == root)
+        {
+          return false;
+        }
+        if (root == p || root == q)
+        {
+          if (dfs(root->left, p, q) || dfs(root->right, p, q))
+          {
+            res = root;
+          }
+          return true;
+        }
+        bool left = dfs(root->left, p, q);
+        bool right = dfs(root->right, p, q);
+        if (left && right)
+        {
+          res = root;
+        }
+        return left || right;
+      };
+    dfs(root, p, q);
+    return res;
+  }
+};
+}
+
 // 337. 打家劫舍 III (中等)
 namespace n337
 {
@@ -869,6 +918,141 @@ public:
       };
     pair<int, int> p = dfs(root);
     return max(p.first, p.second);
+  }
+};
+}
+
+// 993. 二叉树的堂兄弟节点 (简单)
+namespace n993
+{
+//在二叉树中，根节点位于深度 0 处，每个深度为 k 的节点的子节点位于深度 k + 1 处。
+//
+//如果二叉树的两个节点深度相同，但 父节点不同 ，则它们是一对堂兄弟节点。
+//
+//我们给出了具有唯一值的二叉树的根节点 root ，以及树中两个不同节点的值 x 和 y 。
+//
+//只有与值 x 和 y 对应的节点是堂兄弟节点时，才返回 true 。否则，返回 false。
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  bool isCousins(TreeNode* root, int x, int y) {
+    queue<TreeNode*> q;
+    q.push(root);
+    while (!q.empty())
+    {
+      size_t size = q.size();
+      bool xExist = false;
+      bool yExist = false;
+      for (size_t i = 0; i < size; ++i)
+      {
+        TreeNode* node = q.front();
+        q.pop();
+        if (node->val == x)
+        {
+          xExist = true;
+        }
+        if (node->val == y)
+        {
+          yExist = true;
+        }
+        if (node->left != nullptr && node->right != nullptr)
+        {
+          if ((node->left->val == x && node->right->val == y) || (node->left->val == y && node->right->val == x))
+          {
+            return false;
+          }
+        }
+        if (node->left != nullptr)
+        {
+          q.push(node->left);
+        }
+        if (node->right != nullptr)
+        {
+          q.push(node->right);
+        }
+      }
+      if (xExist && yExist)
+      {
+        return true;
+      }
+      if (xExist || yExist)
+      {
+        return false;
+      }
+    }
+    return false;
+  }
+};
+}
+
+// 2641. 二叉树的堂兄弟节点 II
+namespace n2641
+{
+//给你一棵二叉树的根 root ，请你将每个节点的值替换成该节点的所有 堂兄弟节点值的和 。
+//
+//如果两个节点在树中有相同的深度且它们的父节点不同，那么它们互为 堂兄弟 。
+//
+//请你返回修改值之后，树的根 root 。
+//
+//注意，一个节点的深度指的是从树根节点到这个节点经过的边数。
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  TreeNode* replaceValueInTree(TreeNode* root) {
+    queue<TreeNode*> q;
+    q.push(root);
+    int sum = -root->val;
+    while (!q.empty())
+    {
+      size_t size = q.size();
+      int sum_tmp = 0;
+      for (size_t i = 0; i < size; ++i)
+      {
+        TreeNode* node = q.front();
+        q.pop();
+        node->val += sum;
+        int leftVal = 0;
+        if (nullptr != node->left)
+        {
+          sum_tmp += node->left->val;
+          leftVal = node->left->val;
+          node->left->val = -node->left->val;
+          if (nullptr != node->right)
+          {
+            node->left->val -= node->right->val;
+          }
+          q.push(node->left);
+        }
+        if (nullptr != node->right)
+        {
+          sum_tmp += node->right->val;
+          node->right->val = -node->right->val;
+          if (nullptr != node->left)
+          {
+            node->right->val -= leftVal;
+          }
+          q.push(node->right);
+        }
+      }
+      sum = sum_tmp;
+    }
+    return root;
   }
 };
 }
