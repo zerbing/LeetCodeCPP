@@ -1,6 +1,6 @@
 #pragma once
 
-// 94. 二叉树的中序遍历 （简单)
+// 94. 二叉树的中序遍历 (简单)
 namespace n94
 {
 //给定一个二叉树的根节点 root ，返回它的 中序 遍历。
@@ -55,7 +55,7 @@ public:
 };
 }
 
-// 96. 不同的二叉搜索树 （中等)
+// 96. 不同的二叉搜索树 (中等)
 namespace n96
 {
 // 给你一个整数 n ，求恰由 n 个节点组成且节点值从 1 到 n 互不相同的 二叉搜索树 有多少种？返回满足题意的二叉搜索树的种数。
@@ -101,7 +101,7 @@ public:
 };
 }
 
-// 99. 恢复二叉搜索树 （困难)
+// 99. 恢复二叉搜索树 (困难)
 namespace n99
 {
 // 给你二叉搜索树的根节点 root ，该树中的 恰好 两个节点的值被错误地交换。请在不改变其结构的情况下，恢复这棵树
@@ -179,7 +179,7 @@ public:
 };
 }
 
-// 100. 相同的树 （简单)
+// 100. 相同的树 (简单)
 namespace n100
 {
 //给你两棵二叉树的根节点 p 和 q ，编写一个函数来检验这两棵树是否相同。
@@ -213,7 +213,50 @@ public:
 };
 }
 
-// 106. 从中序与后序遍历序列构造二叉树 （中等)
+// 105. 从前序与中序遍历序列构造二叉树 (中等)
+namespace n105
+{
+//给定两个整数数组 preorder 和 inorder ，其中 preorder 是二叉树的先序遍历， inorder 是同一棵树的中序遍历，请构造二叉树并返回其根节点。
+// preorder 和 inorder 均 无重复 元素
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+    if (preorder.empty() || inorder.empty())
+    {
+      return nullptr;
+    }
+    int root = *preorder.begin();
+    int inorderRootIndex = 0;
+    for (int i = 0; i < inorder.size(); ++i)
+    {
+      if (inorder[i] == root)
+      {
+        inorderRootIndex = i;
+        break;
+      }
+    }
+    TreeNode* node = new TreeNode(root);
+    vector<int> leftInorder(inorder.begin(), inorder.begin() + inorderRootIndex);
+    vector<int> rightInorder(inorder.begin() + inorderRootIndex + 1, inorder.end());
+    vector<int> leftPreorder(preorder.begin() + 1, preorder.begin() + 1 + inorderRootIndex);
+    vector<int> rightPreorder(preorder.begin() + inorderRootIndex + 1, preorder.end());
+    node->left = buildTree(leftPreorder, leftInorder);
+    node->right = buildTree(rightPreorder, rightInorder);
+    return node;
+  }
+};
+}
+
+// 106. 从中序与后序遍历序列构造二叉树 (中等)
 namespace n106
 {
 //给定两个整数数组 inorder 和 postorder ，其中 inorder 是二叉树的中序遍历， postorder 是同一棵树的后序遍历，请你构造并返回这颗 二叉树。
@@ -254,7 +297,7 @@ public:
 };
 }
 
-// 109. 有序链表转换二叉搜索树 （中等)
+// 109. 有序链表转换二叉搜索树 (中等)
 namespace n109
 {
 //给定一个单链表的头节点  head ，其中的元素 按升序排序 ，将其转换为高度平衡的二叉搜索树。
@@ -311,7 +354,7 @@ public:
 };
 }
 
-// 110. 平衡二叉树 （简单)
+// 110. 平衡二叉树 (简单)
 namespace n110
 {
 //给定一个二叉树，判断它是否是高度平衡的二叉树。
@@ -351,7 +394,7 @@ public:
 };
 }
 
-// 111. 二叉树的最小深度 （简单)
+// 111. 二叉树的最小深度 (简单)
 namespace n111
 {
 //给定一个二叉树，找出其最小深度。
