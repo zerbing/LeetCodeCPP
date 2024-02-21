@@ -269,13 +269,13 @@ class Solution {
 public:
   int maxProduct(vector<int>& nums) {
     // dp[i].first表示以nums[i]结尾的最大乘积，dp[i].second表示以nums[i]结尾的最小乘积
-    vector<pair<int, int>> dp(nums.size(), {INT_MIN, INT_MAX});
-    dp[0] = {nums[0], nums[0]};
+    vector<pair<int, int>> dp(nums.size(), { INT_MIN, INT_MAX });
+    dp[0] = { nums[0], nums[0] };
     int maxProduct = nums[0];
     for (int i = 1; i < nums.size(); ++i)
     {
-      dp[i].first = max({dp[i - 1].first * nums[i], dp[i - 1].second * nums[i], nums[i]});
-      dp[i].second = min({dp[i - 1].first * nums[i], dp[i - 1].second * nums[i], nums[i]});
+      dp[i].first = max({ dp[i - 1].first * nums[i], dp[i - 1].second * nums[i], nums[i] });
+      dp[i].second = min({ dp[i - 1].first * nums[i], dp[i - 1].second * nums[i], nums[i] });
       maxProduct = max(maxProduct, dp[i].first);
     }
     return maxProduct;
@@ -327,7 +327,7 @@ class Solution {
 public:
   int rob(vector<int>& nums) {
     // dp[i].first表示偷窃到第i个房屋时的最大金额，dp[i].second表示不偷窃第i个房屋时的最大金额
-    vector<pair<int, int>> dp(nums.size() + 1, {0, 0});
+    vector<pair<int, int>> dp(nums.size() + 1, { 0, 0 });
     for (int i = 1; i <= nums.size(); ++i)
     {
       dp[i].first = dp[i - 1].second + nums[i - 1];
@@ -525,7 +525,7 @@ public:
     vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
     for (int len = 2; len <= n; ++len)
     {
-      for (int i = 1; i + len - 1 <= n ; ++i)
+      for (int i = 1; i + len - 1 <= n; ++i)
       {
         int j = i + len - 1;
         dp[i][j] = INT_MAX;

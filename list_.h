@@ -82,11 +82,11 @@ namespace n24
 // 给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
 // Definition for singly-linked list.
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  int val;
+  ListNode* next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 class Solution {
 public:
@@ -120,19 +120,19 @@ namespace n25
 //你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
 // Definition for singly-linked list.
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  int val;
+  ListNode* next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 class Solution {
 public:
   ListNode* reverseKGroup(ListNode* head, int k) {
-    ListNode *dummy = new ListNode(0);
+    ListNode* dummy = new ListNode(0);
     dummy->next = head;
-    ListNode *pre = dummy;
-    ListNode *end = dummy;
+    ListNode* pre = dummy;
+    ListNode* end = dummy;
     while (end->next != nullptr)
     {
       for (int i = 0; i < k && end != nullptr; i++)
@@ -143,25 +143,25 @@ public:
       {
         break;
       }
-      ListNode *start = pre->next;
-      ListNode *next = end->next;
+      ListNode* start = pre->next;
+      ListNode* next = end->next;
       end->next = nullptr;
       pre->next = reverse(start);
       start->next = next;
       pre = start;
       end = pre;
     }
-    ListNode *res = dummy->next;
+    ListNode* res = dummy->next;
     delete dummy;
     return res;
   }
   ListNode* reverse(ListNode* head)
   {
-    ListNode *pre = nullptr;
-    ListNode *cur = head;
+    ListNode* pre = nullptr;
+    ListNode* cur = head;
     while (cur != nullptr)
     {
-      ListNode *next = cur->next;
+      ListNode* next = cur->next;
       cur->next = pre;
       pre = cur;
       cur = next;

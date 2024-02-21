@@ -144,24 +144,24 @@ public:
     unordered_map<long long, long long> memo;
     function<long long(long long)> dfs = [&](long long n) -> long long
       {
-      if (n == 1)
-      {
-        return 0;
-      }
-      if (memo.count(n))
-      {
+        if (n == 1)
+        {
+          return 0;
+        }
+        if (memo.count(n))
+        {
+          return memo[n];
+        }
+        if (n % 2 == 0)
+        {
+          memo[n] = dfs(n / 2) + 1;
+        }
+        else
+        {
+          // 这里直接执行两步可以减少递归次数
+          memo[n] = min(dfs(n / 2), dfs(n / 2 + 1)) + 2;
+        }
         return memo[n];
-      }
-      if (n % 2 == 0)
-      {
-        memo[n] = dfs(n / 2) + 1;
-      }
-      else
-      {
-        // 这里直接执行两步可以减少递归次数
-        memo[n] = min(dfs(n / 2), dfs(n / 2 + 1)) + 2;
-      }
-      return memo[n];
       };
     return static_cast<int>(dfs(n));
   }

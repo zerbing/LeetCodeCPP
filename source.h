@@ -13,7 +13,6 @@ namespace n29
 class Solution {
 public:
   int divide(int dividend, int divisor) {
-
   }
 };
 }
@@ -86,7 +85,6 @@ namespace n2846
 class Solution {
 public:
   vector<int> minOperationsQueries([[maybe_unused]] int n, [[maybe_unused]] vector<vector<int>>& edges, [[maybe_unused]] vector<vector<int>>& queries) {
-
   }
 };
 }

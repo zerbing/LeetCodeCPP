@@ -135,7 +135,6 @@ public:
 class Solution2 {
 public:
   vector<int> maxNumber([[maybe_unused]] vector<int>& nums1, [[maybe_unused]] vector<int>& nums2, [[maybe_unused]] int k) {
-
   }
 };
 }

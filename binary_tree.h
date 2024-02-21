@@ -220,12 +220,12 @@ namespace n105
 // preorder 和 inorder 均 无重复 元素
 // Definition for a binary tree node.
 struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 class Solution {
 public:
@@ -899,7 +899,7 @@ public:
       return root;
     }
     TreeNode* res = nullptr;
-    function<bool(TreeNode* root, TreeNode* p, TreeNode*q)> dfs = [&](TreeNode* root, TreeNode* p, TreeNode* q)->bool
+    function<bool(TreeNode* root, TreeNode* p, TreeNode* q)> dfs = [&](TreeNode* root, TreeNode* p, TreeNode* q)->bool
       {
         if (nullptr == root)
         {
@@ -977,12 +977,12 @@ namespace n993
 //只有与值 x 和 y 对应的节点是堂兄弟节点时，才返回 true 。否则，返回 false。
 // Definition for a binary tree node.
 struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 class Solution {
 public:
@@ -1048,12 +1048,12 @@ namespace n2641
 //注意，一个节点的深度指的是从树根节点到这个节点经过的边数。
 // Definition for a binary tree node.
 struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 class Solution {
 public:
