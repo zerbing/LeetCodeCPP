@@ -57,6 +57,53 @@ public:
 };
 }
 
+// 60. 排列序列 (困难）
+namespace n60
+{
+//给出集合[1, 2, 3, ..., n]，其所有元素共有 n!种排列。
+//
+//按大小顺序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：
+//
+//"123"
+//"132"
+//"213"
+//"231"
+//"312"
+//"321"
+//给定 n 和 k，返回第 k 个排列。
+class Solution {
+public:
+  string getPermutation(int n, int k) {
+    vector<int> factorial(n);
+    factorial[0] = 1;
+    for (int i = 1; i < n; i++)
+    {
+      factorial[i] = factorial[i - 1] * i;
+    }
+    --k;
+    string res;
+    set<int> nums;
+    for (int i = 1; i <= n; i++)
+    {
+      int order = k / factorial[n - i] + 1;
+      // 从1开始找到第order个未使用的数字
+      int num = 0;
+      while (order > 0)
+      {
+        if (nums.find(++num) == nums.end())
+        {
+          order--;
+        }
+      }
+      res.push_back(static_cast<char>(num + '0'));
+      nums.insert(num);
+      k %= factorial[n - i];
+    }
+    return res;
+  }
+};
+}
+
 // 2591. 将钱分给最多的儿童 (简单）
 namespace n2591
 {

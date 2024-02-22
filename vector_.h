@@ -298,12 +298,12 @@ public:
       }
       else
       {
-        res.push_back({left, right});
+        res.push_back({ left, right });
         left = intervals[i][0];
         right = intervals[i][1];
       }
     }
-    res.push_back({left, right});
+    res.push_back({ left, right });
     return res;
   }
 };
