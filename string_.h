@@ -1,6 +1,6 @@
 #pragma once
 
-// 30. 串联所有单词的子串
+// 30. 串联所有单词的子串 (困难)
 namespace n30
 {
 //给定一个字符串 s 和一个字符串数组 words。 words 中所有字符串 长度相同。
@@ -25,6 +25,7 @@ public:
     {
       wordMap[word]++;
     }
+    // 注意这里的遍历方式，因为每个单词的长度是一样的，所以只需要遍历一个单词的长度即可
     for (int i = 0; i < wordLen; ++i)
     {
       int left = i;
