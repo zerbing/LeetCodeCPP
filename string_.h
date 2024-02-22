@@ -19,7 +19,6 @@ public:
     }
     int wordLen = static_cast<int>(words[0].size());
     int wordCount = static_cast<int>(words.size());
-    int totalLen = wordLen * wordCount;
     unordered_map<string, int> wordMap;
     for (auto& word : words)
     {

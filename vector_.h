@@ -18,7 +18,7 @@ namespace n31
 class Solution1 {
 public:
   void nextPermutation(vector<int>& nums) {
-    size_t n = nums.size();
+    int n = static_cast<int>(nums.size());
     for (int i = n - 1; i >= 0; i--)
     {
       int tmpNum = INT_MAX;
@@ -45,13 +45,13 @@ public:
 class Solution2 {
 public:
   void nextPermutation(vector<int>& nums) {
-    int i = nums.size() - 2;
+    int i = static_cast<int>(nums.size()) - 2;
     // 从后往前找到第一个递增的数
     while (i >= 0 && nums[i] >= nums[i + 1]) {
       i--;
     }
     if (i >= 0) {
-      int j = nums.size() - 1;
+      int j = static_cast<int>(nums.size()) - 1;
       while (j >= 0 && nums[i] >= nums[j]) {
         j--;
       }
@@ -75,7 +75,7 @@ namespace n33
 class Solution {
 public:
   int search(vector<int>& nums, int target) {
-    int n = nums.size();
+    int n = static_cast<int>(nums.size());
     if (n == 0)
     {
       return -1;
@@ -138,9 +138,9 @@ public:
     {
       return res;
     }
-    res[0] = it - nums.begin();
+    res[0] = static_cast<int>(it - nums.begin());
     it = upper_bound(nums.begin(), nums.end(), target);
-    res[1] = it - nums.begin() - 1;
+    res[1] = static_cast<int>(it - nums.begin() - 1);
     return res;
   }
 };
@@ -148,7 +148,7 @@ public:
 class Solution2 {
 public:
   int leftBound(vector<int>& nums, int target) {
-    int left = 0, right = nums.size();
+    int left = 0, right = static_cast<int>(nums.size());
     while (left < right)
     {
       int mid = left + (right - left) / 2;
@@ -172,7 +172,7 @@ public:
     return nums[left] == target ? left : -1;
   }
   int rightBound(vector<int>& nums, int target) {
-    int left = 0, right = nums.size();
+    int left = 0, right = static_cast<int>(nums.size());
     while (left < right)
     {
       int mid = left + (right - left) / 2;
@@ -213,7 +213,7 @@ namespace n35
 class Solution {
 public:
   int searchInsert(vector<int>& nums, int target) {
-    int left = 0, right = nums.size();
+    int left = 0, right = static_cast<int>(nums.size());
     while (left < right)
     {
       int mid = left + (right - left) / 2;
@@ -280,7 +280,34 @@ public:
 }
 
 // 56. 合并区间 (中等)
-
+namespace n56
+{
+// 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回 一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间 。
+class Solution {
+public:
+  vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    sort(intervals.begin(), intervals.end());
+    vector<vector<int>> res;
+    int right = intervals[0][1];
+    int left = intervals[0][0];
+    for (int i = 1; i < intervals.size(); ++i)
+    {
+      if (intervals[i][0] <= right)
+      {
+        right = max(right, intervals[i][1]);
+      }
+      else
+      {
+        res.push_back({left, right});
+        left = intervals[i][0];
+        right = intervals[i][1];
+      }
+    }
+    res.push_back({left, right});
+    return res;
+  }
+};
+}
 
 // 283. 移动零
 namespace n283
@@ -291,7 +318,7 @@ namespace n283
 class Solution {
 public:
   void moveZeroes(vector<int>& nums) {
-    int n = nums.size();
+    int n = static_cast<int>(nums.size());
     int left = 0;
     int right = 0;
     while (right < n)
@@ -388,7 +415,7 @@ class Solution {
 public:
   long long findTheArrayConcVal(vector<int>& nums) {
     int i = 0;
-    int j = nums.size() - 1;
+    int j = static_cast<int>(nums.size()) - 1;
     long long res = 0;
     while (i < j)
     {

@@ -29,7 +29,7 @@ class Solution {
 public:
   string multiply(string num1, string num2) {
     if (num1 == "0" || num2 == "0") return "0";
-    int m = num1.size(), n = num2.size();
+    int m = static_cast<int>(num1.size()), n = static_cast<int>(num2.size());
     vector<int> res(m + n, 0);
     for (int i = m - 1; i >= 0; i--)
     {
@@ -49,7 +49,7 @@ public:
     string str;
     while (index < m + n)
     {
-      str.push_back(res[index] + '0');
+      str.push_back(static_cast<char>(res[index] + '0'));
       index++;
     }
     return str;
