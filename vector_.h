@@ -235,6 +235,50 @@ public:
 };
 }
 
+// 36. 有效的数独 (中等)
+namespace n36
+{
+//请你判断一个 9 x 9 的数独是否有效。只需要 根据以下规则 ，验证已经填入的数字是否有效即可。
+//
+//数字 1 - 9 在每一行只能出现一次。
+//数字 1 - 9 在每一列只能出现一次。
+//数字 1 - 9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。（请参考示例图）
+//
+//
+//注意：
+//
+//一个有效的数独（部分已被填充）不一定是可解的。
+//只需要根据以上规则，验证已经填入的数字是否有效即可。
+//空白格用 '.' 表示。
+class Solution {
+public:
+  bool isValidSudoku(vector<vector<char>>& board) {
+    vector<vector<int>> row(9, vector<int>(9, 0));
+    vector<vector<int>> col(9, vector<int>(9, 0));
+    vector<vector<int>> box(9, vector<int>(9, 0));
+    for (int i = 0; i < 9; ++i)
+    {
+      for (int j = 0; j < 9; ++j)
+      {
+        if (board[i][j] != '.')
+        {
+          int num = board[i][j] - '0' - 1;
+          int boxIndex = (i / 3) * 3 + j / 3;
+          if (row[i][num] || col[j][num] || box[boxIndex][num])
+          {
+            return false;
+          }
+          row[i][num] = 1;
+          col[j][num] = 1;
+          box[boxIndex][num] = 1;
+        }
+      }
+    }
+    return true;
+  }
+};
+}
+
 // 283. 移动零
 namespace n283
 {
