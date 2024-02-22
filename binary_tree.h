@@ -965,6 +965,54 @@ public:
 };
 }
 
+// 889. 根据前序和后序遍历构造二叉树 (中等)
+namespace n889
+{
+//给定两个整数数组，preorder 和 postorder ，其中 preorder 是一个具有 无重复 值的二叉树的前序遍历，postorder 是同一棵树的后序遍历，重构并返回二叉树。
+//
+//如果存在多个答案，您可以返回其中 任何 一个。
+// Definition for a binary tree node.
+struct TreeNode {
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  TreeNode* constructFromPrePost(vector<int>& preorder, vector<int>& postorder) {
+    if (preorder.empty() || postorder.empty())
+    {
+      return nullptr;
+    }
+    TreeNode* root = new TreeNode(preorder[0]);
+    if (preorder.size() == 1)
+    {
+      return root;
+    }
+    int leftRoot = preorder[1];
+    int leftRootIndex = 0;
+    for (int i = 0; i < postorder.size(); ++i)
+    {
+      if (postorder[i] == leftRoot)
+      {
+        leftRootIndex = i;
+        break;
+      }
+    }
+    vector<int> leftPreorder(preorder.begin() + 1, preorder.begin() + 1 + leftRootIndex + 1);
+    vector<int> leftPostorder(postorder.begin(), postorder.begin() + leftRootIndex + 1);
+    vector<int> rightPreorder(preorder.begin() + 1 + leftRootIndex + 1, preorder.end());
+    vector<int> rightPostorder(postorder.begin() + leftRootIndex + 1, postorder.end() - 1);
+    root->left = constructFromPrePost(leftPreorder, leftPostorder);
+    root->right = constructFromPrePost(rightPreorder, rightPostorder);
+    return root;
+  }
+};
+}
+
 // 993. 二叉树的堂兄弟节点 (简单)
 namespace n993
 {
