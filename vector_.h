@@ -320,6 +320,7 @@ public:
   vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
     vector<vector<int>> res;
     int n = static_cast<int>(intervals.size());
+    bool insert = false;
     for (int i = 0; i < n; ++i)
     {
       if (intervals[i][1] < newInterval[0])
@@ -328,8 +329,12 @@ public:
       }
       else if (intervals[i][0] > newInterval[1])
       {
-        res.push_back(newInterval);
-        newInterval = intervals[i];
+        if (!insert)
+        {
+          res.push_back(newInterval);
+          insert = true;
+        }
+        res.push_back(intervals[i]);
       }
       else
       {
@@ -337,7 +342,10 @@ public:
         newInterval[1] = max(newInterval[1], intervals[i][1]);
       }
     }
-    res.push_back(newInterval);
+    if (!insert)
+    {
+      res.push_back(newInterval);
+    }
     return res;
   }
 };

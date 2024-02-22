@@ -64,6 +64,32 @@ public:
 };
 }
 
+// 58. 最后一个单词的长度 (简单)
+namespace n58
+{
+//给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
+//
+//单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
+class Solution {
+public:
+  int lengthOfLastWord(string s) {
+    for (int i = static_cast<int>(s.size()) - 1; i >= 0; --i)
+    {
+      if (s[i] != ' ')
+      {
+        int j = i;
+        while (j >= 0 && s[j] != ' ')
+        {
+          j--;
+        }
+        return i - j;
+      }
+    }
+    return 0;
+  }
+};
+}
+
 // 383. 赎金信 (简单)
 namespace n383
 {
