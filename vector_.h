@@ -1,6 +1,6 @@
 #pragma once
 
-// 31. 下一个排列
+// 31. 下一个排列 (中等)
 namespace n31
 {
 //整数数组的一个 排列  就是将其所有成员以序列或线性顺序排列。
@@ -62,7 +62,7 @@ public:
 };
 }
 
-// 33. 搜索旋转排序数组
+// 33. 搜索旋转排序数组 (中等)
 namespace n33
 {
 //整数数组 nums 按升序排列，数组中的值 互不相同 。
@@ -309,7 +309,41 @@ public:
 };
 }
 
-// 283. 移动零
+// 57. 插入区间 (中等)
+namespace n57
+{
+//给你一个 无重叠的 ，按照区间起始端点排序的区间列表。
+//
+//在列表中插入一个新的区间，你需要确保列表中的区间仍然有序且不重叠（如果有必要的话，可以合并区间）。
+class Solution {
+public:
+  vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+    vector<vector<int>> res;
+    int n = static_cast<int>(intervals.size());
+    for (int i = 0; i < n; ++i)
+    {
+      if (intervals[i][1] < newInterval[0])
+      {
+        res.push_back(intervals[i]);
+      }
+      else if (intervals[i][0] > newInterval[1])
+      {
+        res.push_back(newInterval);
+        newInterval = intervals[i];
+      }
+      else
+      {
+        newInterval[0] = min(newInterval[0], intervals[i][0]);
+        newInterval[1] = max(newInterval[1], intervals[i][1]);
+      }
+    }
+    res.push_back(newInterval);
+    return res;
+  }
+};
+}
+
+// 283. 移动零 (简单)
 namespace n283
 {
 //给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
