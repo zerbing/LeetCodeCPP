@@ -145,7 +145,7 @@ public:
       long long mid2 = mid * mid;
       if (mid2 == x)
       {
-        return mid;
+        return static_cast<int>(mid);
       }
       else if (mid2 < x)
       {
@@ -156,7 +156,7 @@ public:
         right = mid;
       }
     }
-    return left - 1;
+    return static_cast<int>(left - 1);
   }
 };
 }

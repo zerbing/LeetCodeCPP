@@ -1,5 +1,33 @@
 #include "pch.h"
 
+namespace n76
+{
+class N76SolutionTest : public ::testing::Test {
+protected:
+  Solution solution;
+};
+TEST_F(N76SolutionTest, HandleNormalInput) {
+  {
+    std::string s = "ADOBECODEBANC";
+    std::string t = "ABC";
+    std::string expected = "BANC";
+    EXPECT_EQ(solution.minWindow(s, t), expected);
+  }
+  {
+    std::string s = "a";
+    std::string t = "a";
+    std::string expected = "a";
+    EXPECT_EQ(solution.minWindow(s, t), expected);
+  }
+  {
+    std::string s = "a";
+    std::string t = "aa";
+    std::string expected = "";
+    EXPECT_EQ(solution.minWindow(s, t), expected);
+  }
+}
+}
+
 // 87. ÈÅÂÒ×Ö·û´®
 namespace n87
 {
@@ -308,6 +336,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*LCP30*";
+  ::testing::GTEST_FLAG(filter) = "*N76*";
   return RUN_ALL_TESTS();
 }

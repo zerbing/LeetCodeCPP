@@ -153,7 +153,50 @@ namespace n76
 class Solution {
 public:
   string minWindow(string s, string t) {
-
+    int m = static_cast<int>(s.size());
+    int n = static_cast<int>(t.size());
+    if (m < n)
+    {
+      return "";
+    }
+    map<char, int> need, window;
+    for (auto c : t)
+    {
+      need[c]++;
+    }
+    int left = 0, right = 0;
+    int resLeft = 0, resLength = INT_MAX;
+    int valid = 0, aimValid = static_cast<int>(need.size());
+    while (right < m)
+    {
+      // 增大窗口
+      window[s[right]]++;
+      if (window[s[right]] == need[s[right]])
+      {
+        valid++;
+      }
+      right++;
+      while (valid == aimValid)
+      {
+        if (right - left < resLength)
+        {
+          resLeft = left;
+          resLength = right - left;
+        }
+        // 缩小窗口
+        window[s[left]]--;
+        if (window[s[left]] < need[s[left]])
+        {
+          valid--;
+        }
+        left++;
+      }
+    }
+    if (resLeft + resLength <= m)
+    {
+      return s.substr(resLeft, resLength);
+    }
+    return "";
   }
 };
 }
