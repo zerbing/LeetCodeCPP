@@ -104,6 +104,29 @@ public:
 };
 }
 
+// 67. 二进制求和
+namespace n67
+{
+// 给你两个二进制字符串 a 和 b ，以二进制字符串的形式返回它们的和。
+class Solution {
+public:
+  string addBinary(string a, string b) {
+    string res;
+    int carry = 0;
+    int i = static_cast<int>(a.size()) - 1, j = static_cast<int>(b.size()) - 1;
+    while (i >= 0 || j >= 0 || carry > 0)
+    {
+      if (i >= 0) carry += a[i--] - '0';
+      if (j >= 0) carry += b[j--] - '0';
+      res.push_back(static_cast<char>(carry % 2 + '0'));
+      carry /= 2;
+    }
+    reverse(res.begin(), res.end());
+    return res;
+  }
+};
+}
+
 // 2591. 将钱分给最多的儿童 (简单）
 namespace n2591
 {
