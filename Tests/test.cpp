@@ -1,5 +1,6 @@
 #include "pch.h"
 
+// 76. 最小覆盖子串 (困难)
 namespace n76
 {
 class N76SolutionTest : public ::testing::Test {
@@ -28,6 +29,7 @@ TEST_F(N76SolutionTest, HandleNormalInput) {
 }
 }
 
+// 79. 单词搜索 (中等)
 namespace n79
 {
 class N79SolutionTest : public ::testing::Test {
@@ -66,7 +68,7 @@ TEST_F(N79SolutionTest, HandleNormalInput) {
 }
 }
 
-// 87. 扰乱字符串
+// 87. 扰乱字符串 (困难)
 namespace n87
 {
 TEST(N87SolutionTest, HandlePositiveInput) {
@@ -77,7 +79,60 @@ TEST(N87SolutionTest, HandlePositiveInput) {
 }
 }
 
-// 96. 不同的二叉搜索树
+// 93. 复原IP地址 (中等)
+namespace n93
+{
+class N93SolutionTest : public ::testing::Test {
+protected:
+  Solution solution;
+};
+
+TEST_F(N93SolutionTest, HandleNormalInput) {
+  {
+    std::string s = "25525511135";
+    std::vector<std::string> expected = { "255.255.11.135", "255.255.111.35" };
+    std::vector<std::string> actual = solution.restoreIpAddresses(s);
+    std::sort(expected.begin(), expected.end());
+    std::sort(actual.begin(), actual.end());
+    EXPECT_EQ(actual, expected);
+  }
+  {
+    std::string s = "0000";
+    std::vector<std::string> expected = { "0.0.0.0" };
+    std::vector<std::string> actual = solution.restoreIpAddresses(s);
+    std::sort(expected.begin(), expected.end());
+    std::sort(actual.begin(), actual.end());
+    EXPECT_EQ(actual, expected);
+  }
+  {
+    std::string s = "1111";
+    std::vector<std::string> expected = { "1.1.1.1" };
+    std::vector<std::string> actual = solution.restoreIpAddresses(s);
+    std::sort(expected.begin(), expected.end());
+    std::sort(actual.begin(), actual.end());
+    EXPECT_EQ(actual, expected);
+  }
+  {
+    std::string s = "010010";
+    std::vector<std::string> expected = { "0.10.0.10","0.100.1.0" };
+    std::vector<std::string> actual = solution.restoreIpAddresses(s);
+    std::sort(expected.begin(), expected.end());
+    std::sort(actual.begin(), actual.end());
+    EXPECT_EQ(actual, expected);
+  }
+  {
+    std::string s = "101023";
+    std::vector<std::string> expected = { "1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3" };
+    std::vector<std::string> actual = solution.restoreIpAddresses(s);
+    std::sort(expected.begin(), expected.end());
+    std::sort(actual.begin(), actual.end());
+    EXPECT_EQ(actual, expected);
+  }
+}
+}
+
+
+// 96. 不同的二叉搜索树 (中等)
 namespace n96
 {
 struct TestCase
@@ -289,7 +344,7 @@ TEST(N581SolutionTest, HandleNormalInput) {
 }
 }
 
-// 2085. 统计出现过一次的公共字符串
+// 2085. 统计出现过一次的公共字符串 (中等)
 namespace n2085
 {
 class N2085SolutionTest : public ::testing::TestWithParam<std::tuple<std::vector<std::string>, std::vector<std::string>, int>>
@@ -322,7 +377,7 @@ INSTANTIATE_TEST_CASE_P(
 );
 }
 
-// 2670. 找出不同元素数目差数组
+// 2670. 找出不同元素数目差数组 (中等)
 namespace n2670
 {
 TEST(N2670SolutionTest, HandlePositiveInput) {
@@ -374,6 +429,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N79*";
+  ::testing::GTEST_FLAG(filter) = "*N93*";
   return RUN_ALL_TESTS();
 }
