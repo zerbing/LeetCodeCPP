@@ -111,7 +111,7 @@ public:
 };
 }
 
-// 87. 扰乱字符串 (困难) // todo
+// 87. 扰乱字符串 (困难)(cp)
 namespace n87
 {
 //使用下面描述的算法可以扰乱字符串 s 得到字符串 t ：
@@ -123,8 +123,39 @@ namespace n87
 //给你两个 长度相等 的字符串 s1 和 s2，判断 s2 是否是 s1 的扰乱字符串。如果是，返回 true ；否则，返回 false 。
 class Solution {
 public:
-  bool isScramble([[maybe_unused]] string s1, [[maybe_unused]] string s2) {
-    return false;
+  bool isScramble(string s1, string s2) {
+    int n = static_cast<int>(s1.size());
+    vector<vector<vector<bool>>> dp(n, vector<vector<bool>>(n, vector<bool>(n + 1, false)));
+    for (int i = 0; i < n; ++i)
+    {
+      for (int j = 0; j < n; ++j)
+      {
+        dp[i][j][1] = s1[i] == s2[j];
+      }
+    }
+    for (int len = 2; len <= n; ++len)
+    {
+      for (int i = 0; i <= n - len; ++i)
+      {
+        for (int j = 0; j <= n - len; ++j)
+        {
+          for (int k = 1; k < len; ++k)
+          {
+            if (dp[i][j][k] && dp[i + k][j + k][len - k])
+            {
+              dp[i][j][len] = true;
+              break;
+            }
+            if (dp[i][j + len - k][k] && dp[i + k][j][len - k])
+            {
+              dp[i][j][len] = true;
+              break;
+            }
+          }
+        }
+      }
+    }
+    return dp[0][0][n];
   }
 };
 }

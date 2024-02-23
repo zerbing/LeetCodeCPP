@@ -131,7 +131,6 @@ TEST_F(N93SolutionTest, HandleNormalInput) {
 }
 }
 
-
 // 96. 不同的二叉搜索树 (中等)
 namespace n96
 {
@@ -429,6 +428,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N93*";
+  ::testing::GTEST_FLAG(filter) = "**";
   return RUN_ALL_TESTS();
 }
