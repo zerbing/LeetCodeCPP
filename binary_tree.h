@@ -927,6 +927,61 @@ public:
 };
 }
 
+// 2583. 二叉树中的第 K 大层和 (中等)
+namespace n2583
+{
+//给你一棵二叉树的根节点 root 和一个正整数 k 。
+//
+//树中的 层和 是指 同一层 上节点值的总和。
+//
+//返回树中第 k 大的层和（不一定不同）。如果树少于 k 层，则返回 - 1 。
+//
+//注意，如果两个节点与根节点的距离相同，则认为它们在同一层。
+// Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+class Solution {
+public:
+  long long kthLargestLevelSum(TreeNode* root, int k) {
+    vector<long long> laySum;
+    queue<TreeNode*> q;
+    q.push(root);
+    while (!q.empty())
+    {
+      int n = static_cast<int>(q.size());
+      long long sum = 0;
+      for (int i = 0; i < n; i++)
+      {
+        TreeNode* node = q.front();
+        q.pop();
+        sum += node->val;
+        if (node->left != nullptr)
+        {
+          q.push(node->left);
+        }
+        if (node->right != nullptr)
+        {
+          q.push(node->right);
+        }
+      }
+      laySum.push_back(sum);
+    }
+    if (laySum.size() >= k)
+    {
+      sort(laySum.begin(), laySum.end(), greater<long long>());
+      return laySum[k - 1];
+    }
+    return -1;
+  }
+};
+}
+
 // 337. 打家劫舍 III (中等)
 namespace n337
 {
