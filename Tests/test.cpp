@@ -66,7 +66,6 @@ TEST_F(N79SolutionTest, HandleNormalInput) {
 }
 }
 
-
 // 87. хебрвж╥Ш╢╝
 namespace n87
 {

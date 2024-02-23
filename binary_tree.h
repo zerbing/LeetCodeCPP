@@ -939,12 +939,12 @@ namespace n2583
 //注意，如果两个节点与根节点的距离相同，则认为它们在同一层。
 // Definition for a binary tree node.
 struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  int val;
+  TreeNode* left;
+  TreeNode* right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
 };
 class Solution {
 public:

@@ -165,10 +165,10 @@ namespace n79
 //
 //单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
 class Solution {
-  public:
+public:
   bool exist(vector<vector<char>>& board, string word) {
-    int m = board.size();
-    int n = board[0].size();
+    int m = static_cast<int>(board.size());
+    int n = static_cast<int>(board[0].size());
     vector<vector<bool>> visited(m, vector<bool>(n, false));
     function<bool(int, int, int)> dfs = [&](int row, int col, int index)
       {
