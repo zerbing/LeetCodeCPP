@@ -396,6 +396,34 @@ public:
 };
 }
 
+// 75. 颜色分类 (中等)
+namespace n75
+{
+//给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+//
+//我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+//
+//必须在不使用库内置的 sort 函数的情况下解决这个问题。
+class Solution {
+public:
+  void sortColors(vector<int>& nums) {
+    map<int, int> m;;
+    for (int i = 0; i < nums.size(); ++i)
+    {
+      m[nums[i]]++;
+    }
+    int index = 0;
+    for (auto it = m.begin(); it != m.end(); ++it)
+    {
+      for (int i = 0; i < it->second; ++i)
+      {
+        nums[index++] = it->first;
+      }
+    }
+  }
+};
+}
+
 // 283. 移动零 (简单)
 namespace n283
 {
