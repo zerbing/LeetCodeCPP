@@ -158,6 +158,48 @@ public:
 };
 }
 
+// 79. 单词搜索 (中等)
+namespace n79
+{
+//给定一个 m x n 二维字符网格 board 和一个字符串单词 word 。如果 word 存在于网格中，返回 true ；否则，返回 false 。
+//
+//单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
+class Solution {
+  public:
+  bool exist(vector<vector<char>>& board, string word) {
+    int m = board.size();
+    int n = board[0].size();
+    vector<vector<bool>> visited(m, vector<bool>(n, false));
+    function<bool(int, int, int)> dfs = [&](int row, int col, int index)
+      {
+        if (row < 0 || row >= m || col < 0 || col >= n || visited[row][col] || board[row][col] != word[index])
+        {
+          return false;
+        }
+        if (index == word.size() - 1)
+        {
+          return true;
+        }
+        visited[row][col] = true;
+        bool res = dfs(row - 1, col, index + 1) || dfs(row + 1, col, index + 1) || dfs(row, col - 1, index + 1) || dfs(row, col + 1, index + 1);
+        visited[row][col] = false;
+        return res;
+      };
+    for (int i = 0; i < m; ++i)
+    {
+      for (int j = 0; j < n; ++j)
+      {
+        if (dfs(i, j, 0))
+        {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+};
+}
+
 // 140. 单词拆分 II (困难)
 namespace n140
 {
@@ -236,7 +278,7 @@ public:
     return res;
   }
 };
-// 更优
+// 更优，数学方法
 class Solution2 {
 public:
   int countNumbersWithUniqueDigits(int n) {

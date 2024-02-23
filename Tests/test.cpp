@@ -28,6 +28,45 @@ TEST_F(N76SolutionTest, HandleNormalInput) {
 }
 }
 
+namespace n79
+{
+class N79SolutionTest : public ::testing::Test {
+protected:
+  Solution solution;
+};
+
+TEST_F(N79SolutionTest, HandleNormalInput) {
+  {
+    std::vector<std::vector<char>> board = {
+      {'A','B','C','E'},
+      {'S','F','C','S'},
+      {'A','D','E','E'}
+    };
+    std::string word = "ABCCED";
+    EXPECT_TRUE(solution.exist(board, word));
+  }
+  {
+    std::vector<std::vector<char>> board = {
+      {'A','B','C','E'},
+      {'S','F','C','S'},
+      {'A','D','E','E'}
+    };
+    std::string word = "SEE";
+    EXPECT_TRUE(solution.exist(board, word));
+  }
+  {
+    std::vector<std::vector<char>> board = {
+      {'A','B','C','E'},
+      {'S','F','C','S'},
+      {'A','D','E','E'}
+    };
+    std::string word = "ABCB";
+    EXPECT_FALSE(solution.exist(board, word));
+  }
+}
+}
+
+
 // 87. ÈÅÂÒ×Ö·û´®
 namespace n87
 {
@@ -336,6 +375,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N76*";
+  ::testing::GTEST_FLAG(filter) = "*N79*";
   return RUN_ALL_TESTS();
 }
