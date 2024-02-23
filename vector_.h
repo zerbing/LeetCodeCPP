@@ -279,6 +279,51 @@ public:
 };
 }
 
+// 54. 螺旋矩阵 (中等)
+namespace n54
+{
+// 给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+class Solution {
+public:
+  vector<int> spiralOrder(vector<vector<int>>& matrix) {
+    vector<int> res;
+    int m = static_cast<int>(matrix.size());
+    int n = static_cast<int>(matrix[0].size());
+    int left = 0;
+    int right = n - 1;
+    int top = 0;
+    int bottom = m - 1;
+    while (left <= right && top <= bottom)
+    {
+      for (int i = left; i <= right; ++i)
+      {
+        res.push_back(matrix[top][i]);
+      }
+      for (int i = top + 1; i <= bottom; ++i)
+      {
+        res.push_back(matrix[i][right]);
+      }
+      if (left < right && top < bottom)
+      {
+        for (int i = right - 1; i >= left; --i)
+        {
+          res.push_back(matrix[bottom][i]);
+        }
+        for (int i = bottom - 1; i > top; --i)
+        {
+          res.push_back(matrix[i][left]);
+        }
+      }
+      left++;
+      right--;
+      top++;
+      bottom--;
+    }
+    return res;
+  }
+};
+}
+
 // 56. 合并区间 (中等)
 namespace n56
 {

@@ -171,6 +171,50 @@ public:
 };
 }
 
+// 61. 旋转链表
+namespace n61
+{
+// 给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。
+// Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+class Solution {
+public:
+  ListNode* rotateRight(ListNode* head, int k) {
+    if (head == nullptr || head->next == nullptr || k == 0)
+    {
+      return head;
+    }
+    int n = 1;
+    ListNode* cur = head;
+    while (cur->next != nullptr)
+    {
+      cur = cur->next;
+      n++;
+    }
+    k = k % n;
+    if (k == 0)
+    {
+      return head;
+    }
+    cur->next = head;
+    cur = head;
+    for (int i = 0; i < n - k - 1; i++)
+    {
+      cur = cur->next;
+    }
+    ListNode* newHead = cur->next;
+    cur->next = nullptr;
+    return newHead;
+  }
+};
+}
+
 // LCR 077. 排序链表 (中等)
 namespace lcr077
 {
