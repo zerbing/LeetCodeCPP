@@ -170,7 +170,7 @@ public:
     int m = static_cast<int>(board.size());
     int n = static_cast<int>(board[0].size());
     vector<vector<bool>> visited(m, vector<bool>(n, false));
-    function<bool(int, int, int)> dfs = [&](int row, int col, int index)
+    function<bool(int, int, int)> dfs = [&](int row, int col, int index)->bool
       {
         if (row < 0 || row >= m || col < 0 || col >= n || visited[row][col] || board[row][col] != word[index])
         {
@@ -196,6 +196,56 @@ public:
       }
     }
     return false;
+  }
+};
+}
+
+// 93. 复原 IP 地址 (中等)
+namespace n93
+{
+//有效 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 '.' 分隔。
+//
+//例如："0.1.2.201" 和 "192.168.1.1" 是 有效 IP 地址，但是 "0.011.255.245"、"192.168.1.312" 和 "192.168@1.1" 是 无效 IP 地址。
+//给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 '.' 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。
+class Solution {
+public:
+  vector<string> restoreIpAddresses(string s) {
+    vector<string> res;
+    string path;
+    int pointCnt = 0;
+    function<void(int, int)> backtrace = [&](int index, int curNum)
+      {
+        if (pointCnt > 3 || index >= s.size())
+        {
+          return;
+        }
+        curNum *= 10;
+        curNum += s[index] - '0';
+        if (curNum > 255)
+        {
+          return;
+        }
+        // 判断是否符合条件
+        if (index == s.size() - 1 && pointCnt == 3)
+        {
+          string s1 = path + to_string(curNum);
+          if (s1.size() == s.size() + 3)
+          {
+            res.push_back(s1);
+          }
+          return;
+        }
+        backtrace(index + 1, curNum);
+        string tmp = path;
+        path += to_string(curNum);
+        path.push_back('.');
+        pointCnt++;
+        backtrace(index + 1, 0);
+        path = tmp;
+        pointCnt--;
+      };
+    backtrace(0, 0);
+    return res;
   }
 };
 }

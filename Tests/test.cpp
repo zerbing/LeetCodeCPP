@@ -66,6 +66,42 @@ TEST_F(N79SolutionTest, HandleNormalInput) {
 }
 }
 
+namespace n93
+{
+class N93SolutionTest : public ::testing::Test {
+protected:
+  Solution solution;
+};
+
+TEST_F(N93SolutionTest, HandleNormalInput) {
+  {
+    std::string s = "25525511135";
+    std::vector<std::string> expected = { "255.255.11.135", "255.255.111.35" };
+    EXPECT_EQ(solution.restoreIpAddresses(s), expected);
+  }
+  {
+    std::string s = "0000";
+    std::vector<std::string> expected = { "0.0.0.0" };
+    EXPECT_EQ(solution.restoreIpAddresses(s), expected);
+  }
+  {
+    std::string s = "1111";
+    std::vector<std::string> expected = { "1.1.1.1" };
+    EXPECT_EQ(solution.restoreIpAddresses(s), expected);
+  }
+  {
+    std::string s = "010010";
+    std::vector<std::string> expected = { "0.10.0.10","0.100.1.0" };
+    EXPECT_EQ(solution.restoreIpAddresses(s), expected);
+  }
+  {
+    std::string s = "101023";
+    std::vector<std::string> expected = { "1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3" };
+    EXPECT_EQ(solution.restoreIpAddresses(s), expected);
+  }
+}
+}
+
 // 87. ÈÅÂÒ×Ö·û´®
 namespace n87
 {
@@ -374,6 +410,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*N79*";
+  ::testing::GTEST_FLAG(filter) = "*N93*";
   return RUN_ALL_TESTS();
 }
