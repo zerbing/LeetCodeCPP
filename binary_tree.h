@@ -1084,26 +1084,26 @@ struct TreeNode {
 class Solution {
 public:
   int rangeSumBST(TreeNode* root, int low, int high) {
-     int res = 0;
-     function<void(TreeNode* root, int low, int high)> dfs = [&](TreeNode* root, int low, int high)
-       {
-         if (nullptr == root)
-         {
-           return;
-         }
-         if (root->val <= high && root->val >= low)
-         {
-           res += root->val;
-         }
-         if (root->val > low)
-         {
-           dfs(root->left, low, high);
-         }
-         if (root->val < high)
-         {
-           dfs(root->right, low, high);
-         }
-       };
+    int res = 0;
+    function<void(TreeNode* root, int low, int high)> dfs = [&](TreeNode* root, int low, int high)
+      {
+        if (nullptr == root)
+        {
+          return;
+        }
+        if (root->val <= high && root->val >= low)
+        {
+          res += root->val;
+        }
+        if (root->val > low)
+        {
+          dfs(root->left, low, high);
+        }
+        if (root->val < high)
+        {
+          dfs(root->right, low, high);
+        }
+      };
     dfs(root, low, high);
     return res;
   }

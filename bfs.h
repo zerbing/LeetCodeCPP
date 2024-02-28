@@ -12,7 +12,6 @@ namespace n127
 class Solution {
 public:
   int ladderLength([[maybe_unused]] string beginWord, [[maybe_unused]] string endWord, [[maybe_unused]] vector<string>& wordList) {
-
   }
 };
 }
