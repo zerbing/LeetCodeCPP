@@ -394,6 +394,24 @@ TEST(N2670SolutionTest, HandlePositiveInput) {
 }
 }
 
+// 2673. 使二叉树所有路径值相等的最小代价 (中等)
+namespace n2673
+{
+class N2673SolutionTest : public ::testing::Test {
+protected:
+  Solution solution;
+};
+
+TEST_F(N2673SolutionTest, HandleNormalInput) {
+  {
+    int n = 7;
+    std::vector<int> cost = { 1, 5, 2, 2, 3, 3, 1 };
+    int expected = 6;
+    EXPECT_EQ(solution.minIncrements(n, cost), expected);
+  }
+}
+}
+
 // LCP 30. 魔塔游戏 (中等)
 namespace lcp30
 {
@@ -428,6 +446,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "**";
+  ::testing::GTEST_FLAG(filter) = "*2673*";
   return RUN_ALL_TESTS();
 }
