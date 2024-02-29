@@ -86,6 +86,71 @@ public:
 };
 }
 
+// 130. 被围绕的区域 (中等)
+namespace n130
+{
+// 给你一个 m x n 的矩阵 board ，由若干字符 'X' 和 'O' ，找到所有被 'X' 围绕的区域，并将这些区域里所有的 'O' 用 'X' 填充。
+class Solution {
+public:
+  void solve(vector<vector<char>>& board) {
+    int m = static_cast<int>(board.size());
+    int n = static_cast<int>(board[0].size());
+
+    // 深度优先搜索
+    set<vector<int>> visited;
+    vector<vector<int>> directions = { { 0, 1 }, { 0, -1 }, { 1, 0 }, {-1, 0} };
+    function<bool(int, int)> dfs = [&](int i, int j) -> bool
+      {
+        if (visited.find({ i, j }) != visited.end())
+        {
+          return true;
+        }
+        // 如果到最外圈，判断是否逃出
+        if (i <= 0 || i >= m - 1 || j <= 0 || j >= n - 1)
+        {
+          // 如果边缘是x代表被包围
+          if (board[i][j] == 'X')
+          {
+            return true;
+          }
+          // 如果边缘是o代表逃出
+          else
+          {
+            return false;
+          }
+        }
+        else if (board[i][j] == 'X')
+        {
+          return true;
+        }
+        else
+        {
+          visited.insert({ i, j });
+          return dfs(i + directions[0][0], j + directions[0][1]) &&
+            dfs(i + directions[1][0], j + directions[1][1]) &&
+            dfs(i + directions[2][0], j + directions[2][1]) &&
+            dfs(i + directions[3][0], j + directions[3][1]);
+        }
+      };
+
+    for (int i = 1; i < m - 1; ++i)
+    {
+      for (int j = 1; j < n - 1; ++j)
+      {
+        visited.clear();
+        if (dfs(i, j))
+        {
+          for (auto& position : visited)
+          {
+            board[position[0]][position[1]] = 'X';
+          }
+        }
+      }
+    }
+  }
+};
+}
+
 // 329. 矩阵中的最长递增路径 (困难)
 namespace n329
 {

@@ -1197,7 +1197,7 @@ namespace n2581
 //给你二维整数数组 edges ，Bob 的所有猜测和整数 k ，请你返回可能成为树根的 节点数目 。如果没有这样的树，则返回 0。
 class Solution {
 public:
-  int rootCount([[maybe_unused]] vector<vector<int>>& edges, [[maybe_unused]] vector<vector<int>>& guesses, int k) {
+  int rootCount([[maybe_unused]] vector<vector<int>>& edges, [[maybe_unused]] vector<vector<int>>& guesses, [[maybe_unused]] int k) {
   }
 };
 }

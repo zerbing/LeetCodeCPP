@@ -185,6 +185,62 @@ INSTANTIATE_TEST_CASE_P(
 );
 }
 
+// 130. 被围绕的区域 (中等)
+namespace n130
+{
+class N130SolutionTest : public ::testing::Test {
+protected:
+  Solution solution;
+};
+
+TEST_F(N130SolutionTest, HandleNormalInput) {
+  {
+    std::vector<std::vector<char>> board = {
+      {'X', 'X', 'X', 'X'},
+      {'X', 'O', 'O', 'X'},
+      {'X', 'X', 'O', 'X'},
+      {'X', 'O', 'X', 'X'}
+    };
+    std::vector<std::vector<char>> expected = {
+      {'X', 'X', 'X', 'X'},
+      {'X', 'X', 'X', 'X'},
+      {'X', 'X', 'X', 'X'},
+      {'X', 'O', 'X', 'X'}
+    };
+    solution.solve(board);
+    EXPECT_EQ(board, expected);
+  }
+  {
+    std::vector<std::vector<char>> board = {
+      {'X', 'O', 'X'},
+      {'O', 'X', 'O'},
+      {'X', 'O', 'X'}
+    };
+    std::vector<std::vector<char>> expected = {
+      {'X', 'O', 'X'},
+      {'O', 'X', 'O'},
+      {'X', 'O', 'X'}
+    };
+    solution.solve(board);
+    EXPECT_EQ(board, expected);
+  }
+  {
+    std::vector<std::vector<char>> board = {
+      {'O', 'O', 'O'},
+      {'O', 'O', 'O'},
+      {'O', 'O', 'O'}
+    };
+    std::vector<std::vector<char>> expected = {
+      {'O', 'O', 'O'},
+      {'O', 'O', 'O'},
+      {'O', 'O', 'O'}
+    };
+    solution.solve(board);
+    EXPECT_EQ(board, expected);
+  }
+}
+}
+
 // 213. 打家劫舍 II (中等)
 namespace n213
 {
@@ -446,6 +502,6 @@ TEST_F(LCP30SolutionTest, HandlesNormalInput) {
 int main(int argc, char** argv)
 {
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::GTEST_FLAG(filter) = "*2673*";
+  ::testing::GTEST_FLAG(filter) = "*N130*";
   return RUN_ALL_TESTS();
 }
