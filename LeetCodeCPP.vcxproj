@@ -149,6 +149,7 @@
     <ClInclude Include="dfs.h" />
     <ClInclude Include="double_pointer.h" />
     <ClInclude Include="dp.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="greedy.h" />
     <ClInclude Include="hash.h" />
     <ClInclude Include="list_.h" />

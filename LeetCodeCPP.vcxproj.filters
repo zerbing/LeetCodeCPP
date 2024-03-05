@@ -61,5 +61,8 @@
     <ClInclude Include="queue_.h">
       <Filter>classified</Filter>
     </ClInclude>
+    <ClInclude Include="graph.h">
+      <Filter>classified</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
