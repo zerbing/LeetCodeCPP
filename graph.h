@@ -42,7 +42,32 @@ public:
 
 class Solution {
 public:
-  Node* cloneGraph([[maybe_unused]] Node* node) {
+  Node* cloneGraph(Node* node) {
+    vector<int> visited;
+    if (node == nullptr)
+    {
+      return nullptr;
+    }
+    unordered_map<int, Node*> map;
+    function<Node* (Node*)> dfs = [&](Node* node)
+      {
+        if (node == nullptr)
+        {
+          return (Node*)nullptr;
+        }
+        if (map.find(node->val) != map.end())
+        {
+          return map[node->val];
+        }
+        Node* newNode = new Node(node->val);
+        map[node->val] = newNode;
+        for (auto& i : node->neighbors)
+        {
+          newNode->neighbors.push_back(dfs(i));
+        }
+        return newNode;
+      };
+    return dfs(node);
   }
 };
 }
