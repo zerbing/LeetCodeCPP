@@ -238,6 +238,54 @@ public:
 };
 }
 
+// 290. 单词规律 (简单)
+namespace n290
+{
+//给定一种规律 pattern 和一个字符串 s ，判断 s 是否遵循相同的规律。
+//
+//这里的 遵循 指完全匹配，例如， pattern 里的每个字母和字符串 s 中的每个非空单词之间存在着双向连接的对应规律。
+class Solution {
+public:
+  bool wordPattern(string pattern, string s) {
+    unordered_map<char, string> m1;
+    unordered_map<string, char> m2;
+    vector<string> words;
+    string word;
+    for (auto c : s)
+    {
+      if (c == ' ')
+      {
+        words.push_back(word);
+        word.clear();
+      }
+      else
+      {
+        word.push_back(c);
+      }
+    }
+    words.push_back(word);
+    if (pattern.size() != words.size())
+    {
+      return false;
+    }
+    for (int i = 0; i < pattern.size(); ++i)
+    {
+      if (m1.count(pattern[i]) && m1[pattern[i]] != words[i])
+      {
+        return false;
+      }
+      if (m2.count(words[i]) && m2[words[i]] != pattern[i])
+      {
+        return false;
+      }
+      m1[pattern[i]] = words[i];
+      m2[words[i]] = pattern[i];
+    }
+    return true;
+  }
+};
+}
+
 // 383. 赎金信 (简单)
 namespace n383
 {
