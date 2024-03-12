@@ -47,7 +47,40 @@ public:
 };
 }
 
-// 1976. 到达目的地的方案数
+// 797. 所有可能的路径 (中等)
+namespace n797
+{
+//给你一个有 n 个节点的 有向无环图（DAG），请你找出所有从节点 0 到节点 n - 1 的路径并输出（不要求按特定顺序）
+//
+//graph[i] 是一个从节点 i 可以访问的所有节点的列表（即从节点 i 到节点 graph[i][j]存在一条有向边）。
+class Solution {
+public:
+  vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
+    vector<vector<int>> result;
+    vector<int> path;
+    function<void(int)> dfs = [&](int n)
+      {
+        path.push_back(n);
+        if (n == graph.size() - 1)
+        {
+          result.push_back(path);
+        }
+        else
+        {
+          for (auto& i : graph[n])
+          {
+            dfs(i);
+          }
+        }
+        path.pop_back();
+      };
+    dfs(0);
+    return result;
+  }
+};
+}
+
+// 1976. 到达目的地的方案数 (中等)
 namespace n1976
 {
 //你在一个城市里，城市由 n 个路口组成，路口编号为 0 到 n - 1 ，某些路口之间有 双向 道路。输入保证你可以从任意路口出发到达其他任意路口，且任意两个路口之间最多有一条路。
