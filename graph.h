@@ -44,10 +44,6 @@ class Solution {
 public:
   Node* cloneGraph(Node* node) {
     vector<int> visited;
-    if (node == nullptr)
-    {
-      return nullptr;
-    }
     unordered_map<int, Node*> map;
     function<Node* (Node*)> dfs = [&](Node* node)
       {
